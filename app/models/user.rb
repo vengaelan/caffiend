@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # References
+  has_many :meetings
 
   # Validations
   validates :first_name, :last_name, presence: true
