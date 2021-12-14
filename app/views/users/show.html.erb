@@ -4,3 +4,6 @@
 <h5>First Name: <%= @user.first_name %></h5>
 <h5>Last Name: <%= @user.last_name %></h5>
 <h5>Email: <%= @user.email %></h5>
+
+<h5>Links:</h5>
+<%= link_to "Create new meeting", new_meeting_path, class: "text-decoration-none"  %>

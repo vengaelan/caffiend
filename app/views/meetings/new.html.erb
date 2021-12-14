@@ -1,0 +1,13 @@
+<div class="containter">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <h5>Create a new meeting:</h5>
+      <%= simple_form_for @meeting do |f| %>
+        <%= f.input :start_datetime, as: :datetime, label: 'Start DateTime', placeholder:"eg. 2021-01-01 13:00" %>
+        <%= f.input :end_datetime, as: :datetime, label: 'End Datetime', placeholder: "eg. 2021-01-01 14:00" %>
+        <%= f.input :location, as: :text, label: 'Description:', placeholder:"eg. 11B Baker street" %>
+        <%= f.button :submit, "Create Meeting" %>
+      <% end %>
+    </div>
+  </div>
+</div>
