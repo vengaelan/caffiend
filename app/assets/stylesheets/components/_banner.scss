@@ -1,0 +1,31 @@
+.home-banner {
+  // Banner image to be updated
+  background-image: url(https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=868&q=80);
+  background-size: cover;
+  height: 100vh;
+  color: #eee;
+  text-align: left;
+  padding-top: 40vh;
+}
+
+.banner-text {
+  width: 500px;
+  margin-left: 100px;
+  color: #F6F9FC;
+  opacity: 0.8;
+}
+
+.banner-text:hover {
+  opacity: 1.0;
+}
+
+.banner-text h1 {
+  font-size: 60px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.banner-text p {
+  font-size: 16px;
+  font-family: 'Open-sans', sans-serif;
+  font-weight: lighter;
+}
