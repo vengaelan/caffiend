@@ -1,5 +1,4 @@
 class Meeting < ApplicationRecord
-
   # References
   belongs_to :user
 
