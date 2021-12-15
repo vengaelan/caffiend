@@ -1,1 +1,21 @@
 // Specific CSS for your home-page
+.home-email {
+  text-align: center;
+  padding-top: 130px;
+}
+.home-email p {
+  color: black;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bolder;
+  opacity: 1.0;
+  font-size: 18px;
+}
+
+.input-email {
+  text-align: center;
+  font-size: 12px;
+  width: 300px;
+  height: 30px;
+  border-radius: 5px;
+  border-style: solid bold black;
+}
