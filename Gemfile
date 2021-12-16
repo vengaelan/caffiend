@@ -32,6 +32,9 @@ gem 'devise'
 
 # -------- Add our own gems here -------
 
+# Enable you to display meetings on a calendar or to book an a service on a specific day
+gem "simple_calendar", "~> 2.4"
+
 # -------- End of our added gems -------
 
 gem 'autoprefixer-rails', '10.2.5'
