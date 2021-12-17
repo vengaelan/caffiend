@@ -1,6 +1,11 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background-color: transparent;
+  transition: 0.5s background-color ease;
+}
+
+.navbar-lewagon-color {
+  background-color: #EDF2F4;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +14,13 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.btn-login {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.btn-signup {
+  background-color: #1FDAFF;
+  font-family: 'Open Sans', sans-serif;
 }

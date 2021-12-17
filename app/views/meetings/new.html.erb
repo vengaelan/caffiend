@@ -1,12 +1,16 @@
+<%# ------- FORM FOR CREATING MEETING INVITE ------- %>
+
 <div class="containter">
   <div class="row justify-content-center">
-    <div class="col-6">
+    <div class="col-3">
       <h5>Create a new meeting:</h5>
+      <%# TO MAKE SIMPLE FORM BETTER FOR datetime attributes, current one works due to have name: xxx %>
       <%= simple_form_for @meeting do |f| %>
-        <%= f.input :start_datetime, as: :datetime, label: 'Start DateTime', placeholder:"eg. 2021-01-01 13:00" %>
-        <%= f.input :end_datetime, as: :datetime, label: 'End Datetime', placeholder: "eg. 2021-01-01 14:00" %>
-        <%= f.input :location, as: :text, label: 'Description:', placeholder:"eg. 11B Baker street" %>
-        <%= f.button :submit, "Create Meeting" %>
+        <%= f.input :start_datetime, as: :string, label: "Date", class: "form-control", input_html: {class: "datepicker", name: "date"} %>
+        <%= f.input :start_datetime, as: :string, label: "Start Time", class: "form-control", input_html: {class: "timepicker", name: "start_time"} %>
+        <%= f.input :end_datetime, as: :string, label: "End Time", class: "form-control", input_html: {class: "timepicker", name: "end_time"} %>
+        <%= f.input :location, as: :text, label: 'Location:', placeholder:"eg. 11B Baker street", class: "form-control" %>
+        <%= f.button :submit, "Create Meeting", class: "btn btn-dark" %>
       <% end %>
     </div>
   </div>

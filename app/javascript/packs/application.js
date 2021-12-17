@@ -23,8 +23,12 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { initFlatpickr } from "../plugins/flatpickr"; // Flatpickr
+import { initUpdateNavbarOnScroll } from '../components/navbar'; //navbar.js
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  initFlatpickr(); // Flatpickr
+  initUpdateNavbarOnScroll(); // navbar.js
 });

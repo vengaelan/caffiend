@@ -7,6 +7,8 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "flatpickr/dist/flatpickr"; // Flatpickr
+@import "simple_calendar"; // Simple Calender
 
 // Your CSS partials
 @import "components/index";

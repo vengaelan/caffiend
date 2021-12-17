@@ -1,0 +1,20 @@
+<%# ------- UPCOMING MEETINGS ------- %>
+
+<%# ------- SIMPLE CALENDER ------- %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="calendar-container col-12">
+      <%= month_calendar(events: @upcoming_meetings, end_attribute: :end_datetime) do |date, upcoming_meetings| %>
+        <%= date %>
+
+        <% upcoming_meetings.each do |upcoming_meeting| %>
+          <div class="meeting">
+            <p><%= link_to "#{upcoming_meeting.location}", meeting_path(upcoming_meeting), class: "text-decoration-none" %></p>
+            <small><%= upcoming_meeting.start_datetime.strftime("%H:%M") %></small>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
