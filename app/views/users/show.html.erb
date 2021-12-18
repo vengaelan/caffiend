@@ -1,9 +1,71 @@
 <%# ------- DASH BOARD ------- %>
 
-<h5>Dashboard:</h5>
-<h5>First Name: <%= @user.first_name %></h5>
-<h5>Last Name: <%= @user.last_name %></h5>
-<h5>Email: <%= @user.email %></h5>
+<div class="dashboard-container py-5 mt-5">
+  
+  <%# ----- User Profile ----- %>
+  
+  <div class="dashboard-card">
+    <div class="user-profile">
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "img-circle" %> <%# placeholder user's dp %>
+      <h5> <%= @user.first_name %> <%= @user.last_name %> </h5>
+    </div>
+    <div class="user-description">
+      <p> Description </p>
+      <p> LinkedIn API </p>
+    </div>
+  </div>
 
-<h5>Links:</h5>
-<%= link_to "Create new meeting", new_meeting_path, class: "text-decoration-none"  %>
+  <%# ----- Schedule Coffee Chat ----- %>
+
+  <div class="dashboard-card">
+    <div class="card-title">
+      <h5><strong> Schedule Coffee Chat </strong></h5>
+    </div>
+    <div class="schedule-card">
+      <%= link_to "Create new meeting", new_meeting_path, class: "text-decoration-none"  %>
+    </div>
+    <div class="schedule-card">
+      <p> Reschedule </p> <%# placeholder for reschedule link %>
+    </div>
+  </div>
+
+  <%# ----- Upcoming Schedule ----- %>
+
+  <div class="dashboard-card">
+    <div class="card-title">
+      <h5><strong> Upcoming Schedule </strong></h5>
+    </div>
+    <div class= "schedule">
+      <p> Kopi Soh </p>
+      <p> in 1 Day </p>
+    </div>
+    <div class= "schedule">
+      <p> Tiger Uncle </p>
+      <p> in 3 Day </p>
+    </div>
+    <div class= "schedule">
+      <p> Milo Boy </p>
+      <p> in 5 Day </p>
+    </div>
+  </div>
+
+  <%# ----- Engagements ----- %>
+
+  <div class="dashboard-card">
+    <div class="card-title">
+      <h5><strong> Engagements </strong></h5>
+    </div>
+    <div class ="engagements-card">
+      <h5> 7 </h5>
+      <p> New Connections Made </p>
+    </div>
+    <div class ="engagements-card">
+      <h5> 3 </h5>
+      <p> Completed Coffee Chats </p>
+    </div>
+    <div class ="engagements-card">
+      <h5> 3 </h5>
+      <p> Recurring Chats </p>
+    </div>
+  </div>
+</div>
