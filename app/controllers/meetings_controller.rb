@@ -17,7 +17,7 @@ class MeetingsController < ApplicationController
 
   # CREATE => GET /users/:id (As a user, I can create a new meeting)
   def create
-    client = get_google_calendar_client current_user
+    # client = get_google_calendar_client current_user
 
     @meeting = Meeting.new()
     @meeting.location = meeting_params[:location]
@@ -26,7 +26,9 @@ class MeetingsController < ApplicationController
     @meeting.user = current_user
     @meeting.save!
 
-    event = get_event(@meeting)
+    # event = get_event(@meeting)
+    # client.insert_event('primary', event)
+    # flash[:notice] = 'Task was successfully added.'
 
     redirect_to user_path(current_user)
   end
@@ -74,7 +76,6 @@ class MeetingsController < ApplicationController
     client
   end
 
-
   private
 
   # STRONG PARAMS
@@ -84,19 +85,19 @@ class MeetingsController < ApplicationController
 
 
   def get_event meeting
-    attendees = "muad@dib.com" # task[:members].split(',').map{ |t| {email: t.strip} }
+    attendees = [{email: "normanrobertf@gmail.com"}] # task[:members].split(',').map{ |t| {email: t.strip} }
     event = Google::Apis::CalendarV3::Event.new({
       summary: meeting.location,
       location: '800 Howard St., San Francisco, CA 94103',
       description: meeting.location,
       start: {
-        date_time: Time.new(meeting.start_datetime).to_datetime.rfc3339,
+        date_time: '2021-12-31T05:00:00-07:00', #Time.new(meeting.start_datetime).to_datetime.rfc3339,
         time_zone: "Asia/Kolkata"
         # date_time: '2019-09-07T09:00:00-07:00',
         # time_zone: 'Asia/Kolkata',
       },
       end: {
-        date_time: Time.new(meeting.end_datetime).to_datetime.rfc3339,
+        date_time: '2021-12-31T06:00:00-07:00', #Time.new(meeting.end_datetime).to_datetime.rfc3339,
         time_zone: "Asia/Kolkata"
       },
       attendees: attendees,
