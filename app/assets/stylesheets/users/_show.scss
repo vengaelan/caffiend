@@ -46,9 +46,17 @@
 }
 
 .upcoming-card {
+  display: flex;
+  justify-content: center;
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 10px;
+}
+
+.small-img-circle {
+  height: 80px;
+  width: 80px;
+  border-radius: 50px;
 }
 
 .engagements-card {
