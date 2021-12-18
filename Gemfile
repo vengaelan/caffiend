@@ -29,8 +29,9 @@ gem 'redis', '~> 4.0'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
-gem 'omniauth-google-oauth2'
-gem "omniauth-rails_csrf_protection"
+gem 'omniauth-google-oauth2' # Google Omniauth
+gem "omniauth-rails_csrf_protection" # Google Omniauth
+gem "google-api-client", require: "google/apis/calendar_v3" # Google Calendar
 
 # -------- Add our own gems here -------
 
