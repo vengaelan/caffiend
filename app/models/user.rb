@@ -13,16 +13,22 @@ class User < ApplicationRecord
   validates_format_of :first_name, :last_name, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/
 
   def self.from_omniauth(access_token)
-    data = access_token.info
-    user = User.where(email: data['email']).first
-
+    data = access_token
+    user = User.where(email: data.info['email']).first
     # For creation of user with data from google
     unless user
-        user = User.create(first_name: data['first_name'],
-          last_name: data['last_name'],
-          email: data['email'],
-          password: Devise.friendly_token[0,20]
-        )
+      user = User.create(
+        first_name: data.info['first_name'],
+        last_name: data.info['last_name'],
+        email: data.info['email'],
+        password: Devise.friendly_token[0, 20],
+        provider: data.provider,
+        uid: data.uid,
+        token: data.credentials.token,
+        expires: data.credentials.expires,
+        expires_at: data.credentials.expires_at,
+        refresh_token: data.credentials.refresh_token
+      )
     end
     user
   end
