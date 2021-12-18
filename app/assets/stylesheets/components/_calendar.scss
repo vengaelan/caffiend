@@ -1,0 +1,23 @@
+// Styling for simple calendar
+
+.simple-calendar {
+  table {
+    min-height: 80vh;
+  }
+  .today {
+    background-color: #FAF3DD;
+  }
+}
+
+.meeting {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #691FFF;
+  transition: background 0.3s ease;
+}
+
+.meeting:hover {
+  background: #5a18df;
+  color: white;
+}

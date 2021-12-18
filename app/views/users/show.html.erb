@@ -1,71 +1,79 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+
 <%# ------- DASH BOARD ------- %>
 
 <div class="dashboard-container py-5 mt-5">
-  
-  <%# ----- User Profile ----- %>
-  
-  <div class="dashboard-card">
-    <div class="user-profile">
-      <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "img-circle" %> <%# placeholder user's dp %>
-      <h5> <%= @user.first_name %> <%= @user.last_name %> </h5>
+  <div class="dashboard-cards">
+    <%# ----- User Profile ----- %>
+    
+    <div class="dashboard-card">
+      <div class="user-profile ml-5 py-4">
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "img-circle" %> <%# placeholder user's dp %>
+      </div>
+      <div class="border-bottom">
+        <center> <h5> <%= @user.first_name %> <%= @user.last_name %> </h5> </center>
+      </div>
+      <div class="user-description">
+        <p> Description </p>
+        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+        <p> LinkedIn API </p>
+      </div>
     </div>
-    <div class="user-description">
-      <p> Description </p>
-      <p> LinkedIn API </p>
-    </div>
-  </div>
 
-  <%# ----- Schedule Coffee Chat ----- %>
+    <%# ----- Schedule Coffee Chat ----- %>
 
-  <div class="dashboard-card">
-    <div class="card-title">
-      <h5><strong> Schedule Coffee Chat </strong></h5>
+    <div class="dashboard-card">
+      <div class="card-title">
+        <h5><strong> Schedule Coffee Chat </strong></h5>
+      </div>
+      <div class="schedule-card">
+        <i class="fas fa-calendar"></i>
+        <%= link_to "Create new meeting", new_meeting_path, class: "text-decoration-none"  %>
+      </div>
+      <div class="schedule-card">
+        <i class="fas fa-redo-alt"></i>
+        <p> Reschedule </p> <%# placeholder for reschedule link %>
+      </div>
     </div>
-    <div class="schedule-card">
-      <%= link_to "Create new meeting", new_meeting_path, class: "text-decoration-none"  %>
-    </div>
-    <div class="schedule-card">
-      <p> Reschedule </p> <%# placeholder for reschedule link %>
-    </div>
-  </div>
 
-  <%# ----- Upcoming Schedule ----- %>
+    <%# ----- Upcoming Schedule ----- %>
 
-  <div class="dashboard-card">
-    <div class="card-title">
-      <h5><strong> Upcoming Schedule </strong></h5>
+    <div class="dashboard-card">
+      <div class="card-title">
+        <h5><strong> Upcoming Schedule </strong></h5>
+      </div>
+      <div class= "upcoming-card">
+        <p> Kopi Soh </p>
+        <p> in 1 Day </p>
+      </div>
+      <div class= "upcoming-card">
+        <p> Tiger Uncle </p>
+        <p> in 3 Day </p>
+      </div>
+      <div class= "upcoming-card">
+        <p> Milo Boy </p>
+        <p> in 5 Day </p>
+      </div>
     </div>
-    <div class= "schedule">
-      <p> Kopi Soh </p>
-      <p> in 1 Day </p>
-    </div>
-    <div class= "schedule">
-      <p> Tiger Uncle </p>
-      <p> in 3 Day </p>
-    </div>
-    <div class= "schedule">
-      <p> Milo Boy </p>
-      <p> in 5 Day </p>
-    </div>
-  </div>
 
-  <%# ----- Engagements ----- %>
+    <%# ----- Engagements ----- %>
 
-  <div class="dashboard-card">
-    <div class="card-title">
-      <h5><strong> Engagements </strong></h5>
-    </div>
-    <div class ="engagements-card">
-      <h5> 7 </h5>
-      <p> New Connections Made </p>
-    </div>
-    <div class ="engagements-card">
-      <h5> 3 </h5>
-      <p> Completed Coffee Chats </p>
-    </div>
-    <div class ="engagements-card">
-      <h5> 3 </h5>
-      <p> Recurring Chats </p>
+    <div class="dashboard-card">
+      <div class="card-title">
+        <h5><strong> Engagements </strong></h5>
+      </div>
+      <div class ="engagements-card">
+        <h5> 7 </h5>
+        <p> New Connections Made </p>
+      </div>
+      <div class ="engagements-card">
+        <h5> 3 </h5>
+        <p> Completed Coffee Chats </p>
+      </div>
+      <div class ="engagements-card">
+        <h5> 3 </h5>
+        <p> Recurring Chats </p>
+      </div>
     </div>
   </div>
 </div>

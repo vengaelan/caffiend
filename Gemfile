@@ -29,8 +29,13 @@ gem 'redis', '~> 4.0'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
 
 # -------- Add our own gems here -------
+
+# Enable you to display meetings on a calendar or to book an a service on a specific day
+gem "simple_calendar", "~> 2.4"
 
 # -------- End of our added gems -------
 

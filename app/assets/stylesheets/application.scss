@@ -8,8 +8,9 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "flatpickr/dist/flatpickr"; // Flatpickr
+@import "simple_calendar"; // Simple Calender
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import "users/show"
+@import "users/show";
