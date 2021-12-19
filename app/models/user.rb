@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: [:google_oauth2]
+         :omniauthable, omniauth_providers: [:google_oauth2] # Google Omniauth
 
   # References
   has_many :meetings
@@ -14,7 +14,6 @@ class User < ApplicationRecord
 
   def self.from_omniauth(access_token)
     data = access_token
-    # data_cred = access_token.credentials
     user = User.where(email: data.info['email']).first
 
     # For creation of user with data from google
