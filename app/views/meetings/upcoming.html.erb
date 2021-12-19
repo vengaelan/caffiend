@@ -1,7 +1,7 @@
 <%# ------- UPCOMING MEETINGS ------- %>
 
 <%# ------- SIMPLE CALENDER ------- %>
-<div class="container py-5">
+<div class="container py-5 mt-3">
   <div class="row justify-content-center">
     <div class="calendar-container col-12">
       <%= month_calendar(events: @upcoming_meetings, end_attribute: :end_datetime) do |date, upcoming_meetings| %>
