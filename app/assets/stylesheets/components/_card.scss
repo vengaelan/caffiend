@@ -1,0 +1,29 @@
+.card-container {
+  width: 900px;
+  margin: auto;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60px;
+
+}
+
+.card {
+    width: 240px;
+    border-radius: 3px;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid rgb(230,230,230);
+}
+
+.card p {
+  font-size: 18px;
+  font-family: 'Open-sans', sans-serif;
+}
+
+.card h4 {
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+}

@@ -1,0 +1,28 @@
+.columns {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.column {
+  width: 200px;
+  margin-right: 10px;
+  align-content: center;
+}
+
+.column-text {
+  margin-top: 30px;
+}
+
+.column-text h5 {
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  position: center;
+}
+
+.column-text p {
+  font-size: 16px;
+  font-family: 'Open-sans', sans-serif;
+  margin-top: 10px;
+}
