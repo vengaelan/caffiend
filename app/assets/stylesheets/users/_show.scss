@@ -1,30 +1,34 @@
 .dashboard-container {
-  margin: auto;
-  border: 1px solid red;
+  // margin: auto;
+  background-color: #f6f9fc;
 }
 
-.dashboard-cards {
-  display: flex;
-  justify-content: space-evenly;
-}
+// .dashboard-cards {
+//   display: flex;
+//   justify-content: space-evenly;
+// }
 
 .dashboard-card {
   background-color: white;
-  margin: 1px;
+  margin: 15px;
   border: 1px solid black;
-  height: 700px;
-  width: 300px;
+  border-radius: 10px;
+  min-height: 700px;
+  max-width: 300px;
+  box-shadow: 2px 2px 8px #14213D;
 }
 
 .card-title {
-  margin: 10px auto;
+  justify-content: center;
+  margin: 15px auto;
   border-bottom: 1px solid black;
   text-align: center;
 }
 
-.user-profile .img-circle {
-  height: 200px;
-  width: 200px;
+.profile-img {
+  margin: 10px;
+  height: 150px;
+  width: 150px;
   border-radius: 150px;
 }
 
@@ -33,38 +37,51 @@
   padding: 5px;
 }
 
-.schedule-card {
+.info-card {
   display: flex;
-  align-items: left;
+  align-items: center;
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 10px;
+}
+
+.engagement-num {
+  text-align: center;
+  margin: auto auto auto 40px;
+  height: 80px;
+  width: 80px;
+}
+
+.engagement-details {
+  text-align: center;
+  margin: auto 60px auto auto;
+  height: 80px;
+  width: 80px;
 }
 
 .fas {
+  margin-left: 20px;
+  margin-right: 25px;
   font-size: 50px;
 }
 
-.upcoming-card {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 10px;
-}
-
 .small-img-circle {
+  margin-left: 20px;
+  margin-right: 25px;
   height: 80px;
   width: 80px;
   border-radius: 50px;
 }
 
-.engagements-card {
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 10px;
+.info-card h5 {
+  margin: 0;
 }
 
-// viewport
+.info-card p {
+  margin: 0;
+}
+
+.btn {
+  color: #691fff;
+  border-radius: 8px;
+}
