@@ -1,11 +1,14 @@
 <%# ------- MEETING INVITE ------- %>
+<div class="py-5 mt-4 pl-5">
+  <div>
+    <h5>Meeting Invite:</h5>
+    <h5>Date: <%= @meeting.start_datetime.to_date %></h5>
+    <h5>Start Time: <%= @meeting.start_datetime.strftime("%H:%M") %></h5>
+    <h5>End Time: <%= @meeting.end_datetime.strftime("%H:%M") %></h5>
+    <h5>Location: <%= @meeting.location %></h5>
+    <h5>Status: <%= @meeting.status %></h5>
 
-<h5>Meeting Invite:</h5>
-<h5>Date: <%= @meeting.start_datetime.to_date %></h5>
-<h5>Start Time: <%= @meeting.start_datetime.strftime("%H:%M") %></h5>
-<h5>End Time: <%= @meeting.end_datetime.strftime("%H:%M") %></h5>
-<h5>Location: <%= @meeting.location %></h5>
-<h5>Status: <%= @meeting.status %></h5>
-
-<h5>links:</h5>
-<%= link_to "Back to Dashboard", user_path(current_user), class: "text-decoration-none"  %>
+    <h5>links:</h5>
+    <%= link_to "Back to Dashboard", user_path(current_user), class: "text-decoration-none"  %>
+  </div>
+</div>
