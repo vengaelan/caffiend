@@ -275,10 +275,10 @@ Devise.setup do |config|
   config.omniauth :google_oauth2, '917705677471-dtvd3na230ltof1gigph8ni07ejstdgq.apps.googleusercontent.com', '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', { access_type: "offline",
                     prompt: "consent",
                     select_account: true,
-                    scope: 'calendar' }
+                    scope: 'userinfo.email, userinfo.profile, calendar' }
 
   # userinfo.email, userinfo.profile,
-  
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
