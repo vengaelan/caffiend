@@ -24,11 +24,7 @@ class User < ApplicationRecord
         email: data.info['email'],
         password: Devise.friendly_token[0, 20],
         provider: data.provider,
-        uid: data.uid,
-        token: data.credentials.token,
-        expires: data.credentials.expires,
-        expires_at: data.credentials.expires_at,
-        refresh_token: data.credentials.refresh_token
+        uid: data.uid
       )
     end
     user
