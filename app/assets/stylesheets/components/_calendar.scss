@@ -21,3 +21,16 @@
   background: #5a18df;
   color: white;
 }
+
+.meeting.pending {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #1FDAFF;
+  transition: background 0.3s ease;
+}
+
+.meeting.pending:hover {
+  background: #1FDAFF;
+  color: white;
+}
