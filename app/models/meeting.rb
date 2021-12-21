@@ -9,7 +9,7 @@ class Meeting < ApplicationRecord
   validates :status, inclusion: { in: ["PENDING", "ACCEPTED", "CANCELLED", "COMPLETED"] }
 
   # Simple Calender
-    default_scope -> { order(:start_datetime) }  # Our meetings will be ordered by their start_time by default
+    # default_scope -> { order(:start_datetime) }  # Our meetings will be ordered by their start_time by default
 
     def time
       "#{start_datetime.strftime('%I:%M %p')} - #{end_datetime.strftime('%I:%M %p')}"

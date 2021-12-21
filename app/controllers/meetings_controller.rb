@@ -105,18 +105,18 @@ class MeetingsController < ApplicationController
   def get_event meeting
     attendees = [{ email: meeting.invitee_email }] # task[:members].split(',').map{ |t| {email: t.strip} }
     event = Google::Apis::CalendarV3::Event.new({
-      summary: meeting.location,
-      location: '800 Howard St., San Francisco, CA 94103',
+      summary: 'CAFFIEND SESSION',
+      location: meeting.location,
       description: meeting.location,
       start: {
-        date_time: '2021-12-31T05:00:00-07:00', #Time.new(meeting.start_datetime).to_datetime.rfc3339,
-        time_zone: "Asia/Kolkata"
+        date_time: meeting.start_datetime.iso8601, #Time.new(meeting.start_datetime).to_datetime.rfc3339,
+        time_zone: "Asia/Singapore"
         # date_time: '2019-09-07T09:00:00-07:00',
         # time_zone: 'Asia/Kolkata',
       },
       end: {
-        date_time: '2021-12-31T06:00:00-07:00', #Time.new(meeting.end_datetime).to_datetime.rfc3339,
-        time_zone: "Asia/Kolkata"
+        date_time: meeting.end_datetime.iso8601, #Time.new(meeting.end_datetime).to_datetime.rfc3339,
+        time_zone: "Asia/Singapore"
       },
       attendees: attendees,
       reminders: {
