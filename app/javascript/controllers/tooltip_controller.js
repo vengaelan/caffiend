@@ -9,6 +9,7 @@
 
 import { Controller } from "stimulus"
 import tippy from "tippy.js"
+import "tippy.js/themes/light.css";
 
 export default class extends Controller {
   static targets = [ "meeting", "info" ]
@@ -28,6 +29,7 @@ export default class extends Controller {
     content: this.infoTarget.innerHTML,
     allowHTML: true,
     placement: 'right',
+    theme: 'light',
     })
   }
 
