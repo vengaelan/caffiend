@@ -15,9 +15,28 @@
   border-radius: 4px;
   background: #691FFF;
   transition: background 0.3s ease;
+
+  a {
+    color: white;
+  }
 }
 
 .meeting:hover {
   background: #5a18df;
+  color: white;
+}
+
+.meeting.pending {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #1FDAFF;
+  transition: background 0.3s ease;
+  opacity: 0.8;
+}
+
+.meeting.pending:hover {
+  background: #1FDAFF;
+  opacity: 1;
   color: white;
 }
