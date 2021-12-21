@@ -15,9 +15,9 @@
 
   <body>
     <% if params[:controller] == 'pages' && params[:action] == 'home' %>
-      <% render 'shared/navbar' %>
+      <%= render 'shared/navbar' %>
     <% else %>
-      <% render 'shared/navbar_index' %>
+      <%= render 'shared/navbar_index' %>
     <% end %>
     <%= render 'shared/flashes' %>
 
