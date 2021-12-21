@@ -31,9 +31,12 @@ class MeetingsController < ApplicationController
   def update
     @meeting = Meeting.find(params[:id])
 
-      if !@meeting.invitee_email
-        @meeting.update(invitee_email: meeting_params[:invitee_email])
-      end
+    if !@meeting.invitee_email
+      @meeting.update(invitee_email: meeting_params[:invitee_email], status: "ACCEPTED")
+      client = get_google_calendar_client(@meeting.user)
+      event = get_event(@meeting)
+      client.insert_event('primary', event, send_updates: "all")
+    end
 
     redirect_to meeting_path
   end
@@ -100,7 +103,7 @@ class MeetingsController < ApplicationController
 
 
   def get_event meeting
-    attendees = [{email: "normanrobertf@gmail.com"}] # task[:members].split(',').map{ |t| {email: t.strip} }
+    attendees = [{ email: meeting.invitee_email }] # task[:members].split(',').map{ |t| {email: t.strip} }
     event = Google::Apis::CalendarV3::Event.new({
       summary: meeting.location,
       location: '800 Howard St., San Francisco, CA 94103',
