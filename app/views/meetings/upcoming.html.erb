@@ -8,9 +8,12 @@
         <%= date %>
 
         <% upcoming_meetings.each do |upcoming_meeting| %>
-          <div class="meeting">
+          <div class="meeting" data-controller="tooltip" data-tooltip-target="meeting">
             <p><%= link_to "#{upcoming_meeting.location}", meeting_path(upcoming_meeting), class: "text-decoration-none" %></p>
             <small><%= upcoming_meeting.start_datetime.strftime("%H:%M") %></small>
+            <div data-tooltip-target="info">
+              <%= upcoming_meeting.location %></div>
+            </div>
           </div>
         <% end %>
       <% end %>
