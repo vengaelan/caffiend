@@ -9,5 +9,8 @@ Rails.application.routes.draw do
       get 'upcoming'
       get 'past'
     end
+    member do
+      get 'send_invite' # to send external link to attendee
+    end
   end
 end

@@ -8,10 +8,13 @@
         <%= date %>
 
         <% upcoming_meetings.each do |upcoming_meeting| %>
-          <div class="meeting" data-controller="tooltip" data-tooltip-target="meeting">
+          <%# Add pending class to meeting to differentiate in calendar  %>
+          <div class="<%= upcoming_meeting.status == 'ACCEPTED' ? "meeting" : "meeting pending" %>" data-controller="tooltip" data-tooltip-target="meeting">
             <p><%= link_to "#{upcoming_meeting.location}", meeting_path(upcoming_meeting), class: "text-decoration-none" %></p>
             <small><%= upcoming_meeting.start_datetime.strftime("%H:%M") %></small>
+            <%# Content for tooltip to be added below, default display: none %>
             <div data-tooltip-target="info">
+              <p>Tooltip Test</p>
               <%= upcoming_meeting.location %></div>
             </div>
           </div>

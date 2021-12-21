@@ -4,11 +4,6 @@ require "google/api_client/client_secrets.rb"
 class MeetingsController < ApplicationController
   CALENDAR_ID = 'primary'
 
-  # SHOW => GET /meetings/:id (As a user, I can generate a meeting invite link/ view meeting)
-  def show
-    @meeting = Meeting.find(params[:id])
-  end
-
   # NEW => GET /users/:id (As a user, I can create a new meeting)
   def new
     @meeting = Meeting.new
@@ -16,7 +11,7 @@ class MeetingsController < ApplicationController
 
   # CREATE => GET /users/:id (As a user, I can create a new meeting + Send a google event w notif)
   def create
-    client = get_google_calendar_client current_user
+    # client = get_google_calendar_client current_user
 
     # Named params are retrieved form params and not meeting params. Found out through raise. Need to check with TA.
     @meeting = Meeting.new()
@@ -26,17 +21,37 @@ class MeetingsController < ApplicationController
     @meeting.user = current_user
     @meeting.save!
 
-    event = get_event(@meeting)
-    client.insert_event('primary', event, send_updates: "all")
+    # event = get_event(@meeting)
+    # client.insert_event('primary', event, send_updates: "all")
     flash[:notice] = 'You successfully created a new meeting!'
 
     redirect_to user_path(current_user)
   end
 
+  def update
+    @meeting = Meeting.find(params[:id])
+
+    if !@meeting.invitee_email
+      @meeting.update(invitee_email: meeting_params[:invitee_email], status: "ACCEPTED")
+      client = get_google_calendar_client(@meeting.user)
+      event = get_event(@meeting)
+      client.insert_event('primary', event, send_updates: "all")
+    end
+
+    redirect_to meeting_path
+  end
+
+  # SHOW => GET /meetings/:id (As a user, I can generate a meeting invite link/ view meeting)
+  def show
+    @meeting = Meeting.find(params[:id])
+  end
+
+  # CAFFIEND CREATED ACTIONS
+
   # UPCOMING => GET /users/:id (As a user, I can view my upcoming meetings)
   def upcoming
     start_date = params.fetch(:start_date, Date.today).to_date
-    @upcoming_meetings = Meeting.where(start_datetime: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week, status: "ACCEPTED")
+    @upcoming_meetings = Meeting.where(start_datetime: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week, status: ["ACCEPTED", "PENDING"])
   end
 
   # PAST => GET /users/:id (As a user, I can view my past meetings)
@@ -75,29 +90,33 @@ class MeetingsController < ApplicationController
     client
   end
 
+  def send_invite
+    @meeting = Meeting.find(params[:id])
+  end
+
   private
 
   # STRONG PARAMS
   def meeting_params
-    params.require(:meeting).permit(:date, :start_time, :end_time, :location) # Need to require named parameters from simple form
+    params.require(:meeting).permit(:date, :start_time, :end_time, :location, :invitee_email) # Need to require named parameters from simple form
   end
 
 
   def get_event meeting
-    attendees = [{email: "normanrobertf@gmail.com"}] # task[:members].split(',').map{ |t| {email: t.strip} }
+    attendees = [{ email: meeting.invitee_email }] # task[:members].split(',').map{ |t| {email: t.strip} }
     event = Google::Apis::CalendarV3::Event.new({
-      summary: meeting.location,
-      location: '800 Howard St., San Francisco, CA 94103',
+      summary: 'CAFFIEND SESSION',
+      location: meeting.location,
       description: meeting.location,
       start: {
-        date_time: '2021-12-31T05:00:00-07:00', #Time.new(meeting.start_datetime).to_datetime.rfc3339,
-        time_zone: "Asia/Kolkata"
+        date_time: meeting.start_datetime.iso8601, #Time.new(meeting.start_datetime).to_datetime.rfc3339,
+        time_zone: "Asia/Singapore"
         # date_time: '2019-09-07T09:00:00-07:00',
         # time_zone: 'Asia/Kolkata',
       },
       end: {
-        date_time: '2021-12-31T06:00:00-07:00', #Time.new(meeting.end_datetime).to_datetime.rfc3339,
-        time_zone: "Asia/Kolkata"
+        date_time: meeting.end_datetime.iso8601, #Time.new(meeting.end_datetime).to_datetime.rfc3339,
+        time_zone: "Asia/Singapore"
       },
       attendees: attendees,
       reminders: {
