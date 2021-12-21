@@ -32,9 +32,11 @@
   border-radius: 4px;
   background: #1FDAFF;
   transition: background 0.3s ease;
+  opacity: 0.8;
 }
 
 .meeting.pending:hover {
   background: #1FDAFF;
+  opacity: 1;
   color: white;
 }
