@@ -13,11 +13,10 @@ import tippy from "tippy.js"
 export default class extends Controller {
   static targets = [ "meeting", "info" ]
 
+  // No trigger event needed as we initialize a tooltip using tippy.js where trigger event is included
+
+
   initialize() {
-
-    // this.meeting = this.getMeeting();
-    // this.info = this.getInfo();
-
 
     this.initPopup();
 
@@ -32,22 +31,4 @@ export default class extends Controller {
     })
   }
 
-  // getInfo() {
-  //   if (this.hasInfoTarget) {
-  //     return this.infoTarget;
-  //   } else {
-  //     var info = document.createElement('div')
-  //     info.innerHTML = this.data.get("info");
-
-  //     return info
-  //   }
-  // }
-
-  // getMeeting() {
-  //   if (this.hasMeetingTarget) {
-  //     return this.meetingTarget;
-  //   } else {
-  //     return this.element;
-  //   }
-  // }
 }
