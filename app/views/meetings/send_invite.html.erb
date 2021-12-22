@@ -2,6 +2,6 @@
   <%= "Confirm your meeting with #{@meeting.user.first_name}" %>
   <%= simple_form_for @meeting do |f| %>
     <%= f.input :invitee_email, as: :string, label: 'Your email', class: 'form-control' %>
-    <%= f.button :submit, "Create Meeting", class: "btn btn-dark" %>
+    <%= f.button :submit, "Confirm meeting with #{@meeting.user.first_name}", class: "btn btn-dark" %>
   <% end %>
 </div>

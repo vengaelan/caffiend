@@ -25,7 +25,7 @@ class MeetingsController < ApplicationController
     # client.insert_event('primary', event, send_updates: "all")
     flash[:notice] = 'You successfully created a new meeting!'
 
-    redirect_to user_path(current_user)
+    redirect_to send_invite_meeting_path(@meeting)
   end
 
   def update
