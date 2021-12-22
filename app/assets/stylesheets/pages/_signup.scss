@@ -1,0 +1,22 @@
+.signup-banner {
+  background-image: url(https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80);
+  background-size: cover;
+  // height: 70vh;
+  margin-top: 56px;
+  // border: 2px solid red;
+  color: black;
+  text-align: left;
+}
+
+.card-signup {
+  opacity: 1;
+}
+
+.signup-form {
+  background-color: #eee;
+  width: 300px;
+  margin: 10px;
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
