@@ -6,23 +6,33 @@
 }
 
 .column {
-  width: 200px;
+  width: 190px;
   margin-right: 10px;
   align-content: center;
 }
 
+.column .column-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
 .column-text {
   margin-top: 30px;
+
 }
 
 .column-text h5 {
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
-  position: center;
+  font-size: 18px;
+  text-align: center;
 }
 
 .column-text p {
   font-size: 16px;
   font-family: 'Open-sans', sans-serif;
-  margin-top: 10px;
+  padding-block: 6px;
+  text-align: center;
 }
