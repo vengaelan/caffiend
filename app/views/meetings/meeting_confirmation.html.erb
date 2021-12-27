@@ -1,0 +1,10 @@
+<h2>Hooray!</h2>
+<h2>Your invite with <%= @meeting.user.first_name %> has been confirmed </h2>
+
+<h3>Details</h3>
+<h3>Date: <%= @meeting.start_datetime %></h3>
+<h3>Time: <%= @meeting.end_datetime %></h3>
+<h3>Location: <%= @meeting.location %></h3>
+
+<h3>Sign up with an account with us!</h3>
+<%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary"%>

@@ -38,7 +38,7 @@ class MeetingsController < ApplicationController
       client.insert_event('primary', event, send_updates: "all")
     end
 
-    redirect_to meeting_path
+    redirect_to  meeting_confirmation_meeting_path(@meeting)
   end
 
   # SHOW => GET /meetings/:id (As a user, I can generate a meeting invite link/ view meeting)
@@ -91,6 +91,10 @@ class MeetingsController < ApplicationController
   end
 
   def send_invite
+    @meeting = Meeting.find(params[:id])
+  end
+
+  def meeting_confirmation
     @meeting = Meeting.find(params[:id])
   end
 
