@@ -1,0 +1,17 @@
+.container-confirmation {
+  background-image: url(https://images.unsplash.com/photo-1579546929556-bf8352f5889c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);
+  background-size: cover;
+  min-height: 80vh;
+  display: flex;
+}
+
+.confirmation-box {
+  margin: auto;
+  background-color: #F6F9FC;
+  border-radius: 10px;
+  padding: 50px;
+}
+
+.confirmation-title, .confirmation-details {
+  border-bottom: 1px solid lightgrey;
+}
