@@ -1,13 +1,13 @@
 <%# ------- ONLY MONTH CALENDER PARTIAL IS USED ------- %>
 
 <div class="simple-calendar">
-  <div class="d-flex align-items-center justify-content-between">
+  <div class="calendar-style d-flex align-items-center justify-content-between">
     <div class="calendar-heading my-2">
-      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view, class: 'btn btn-outline-dark' %>
+      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view, class: 'btn caffiend-btn' %>
       <span class="calendar-title btn btn-secondary"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
-      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view, class: 'btn btn-outline-dark' %>
+      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view, class: 'btn caffiend-btn' %>
     </div>
-    <%= link_to 'Create meeting', new_meeting_path, class: 'btn btn-outline-primary' %>
+    <%= link_to 'Create meeting', new_meeting_path, class: 'btn btn-outline-primary caffiend-btn' %>
   </div>
 
   <table class="table table-striped">
