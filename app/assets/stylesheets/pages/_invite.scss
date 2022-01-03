@@ -1,0 +1,19 @@
+.invite-container {
+  background-image: url(https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
+  background-size: cover;
+  min-height: 80vh;
+  display: flex;
+}
+
+.invite-box {
+  margin: auto;
+  background-color: #F6F9FC;
+  border-radius: 10px;
+  padding: 50px;
+  margin-top: 30px;
+}
+
+.invite-box h3 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}

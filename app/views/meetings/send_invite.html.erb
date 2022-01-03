@@ -1,7 +1,11 @@
-<div class="container">
-  <%= "Confirm your meeting with #{@meeting.user.first_name}" %>
-  <%= simple_form_for @meeting do |f| %>
-    <%= f.input :invitee_email, as: :string, label: 'Your email', class: 'form-control' %>
-    <%= f.button :submit, "Confirm meeting with #{@meeting.user.first_name}", class: "btn btn-dark" %>
-  <% end %>
+<div class="invite-container py-5 mt-5">
+  <div class="invite-box">
+    <h3><%= "Confirm your meeting with #{@meeting.user.first_name}" %></h3>
+    <br>
+    <%= simple_form_for @meeting do |f| %>
+      <%= f.input :invitee_email, as: :string, label: 'Your email', placeholder: "input your email address", class: 'form-control' %>
+      <br>
+      <center><%= f.button :submit, "Confirm meeting with #{@meeting.user.first_name}", class: "caffiend-btn" %></center>
+    <% end %>
+  </div>
 </div>
