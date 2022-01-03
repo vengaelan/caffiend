@@ -15,6 +15,11 @@ const initFlatpickr = () => {
     noCalendar: true,
     dateFormat: "H:i",
   });
+
+  flatpickr(".datetimepicker", {
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
+  });
 }
 
 export { initFlatpickr };
