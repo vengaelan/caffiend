@@ -20,6 +20,7 @@ class MeetingsController < ApplicationController
     @meeting.start_datetime = params[:date] + " " + params[:start_time]
     @meeting.end_datetime = params[:date] + " " + params[:end_time]
     @meeting.user = current_user
+
     # loop through choices hash and create new choice
     meeting_params[:choices_attributes].each_value do |value|
       @meeting.choices.build(value)
@@ -107,7 +108,7 @@ class MeetingsController < ApplicationController
 
   # STRONG PARAMS
   def meeting_params
-    params.require(:meeting).permit(:date, :start_time, :end_time, :location, :invitee_email, choices_attributes: [:location]) # Need to require named parameters from simple form
+    params.require(:meeting).permit(:date, :start_time, :end_time, :location, :invitee_email, choices_attributes: [:start_datetime, :end_datetime, :location]) # Need to require named parameters from simple form
   end
 
 
