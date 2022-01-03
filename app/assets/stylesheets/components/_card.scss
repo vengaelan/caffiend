@@ -4,15 +4,20 @@
 }
 
 .cards {
-    display: flex;
-    justify-content: space-between;
+    display: inline-flex;
+    flex-wrap: wrap;
+    //justify-content: space-between;
     margin-bottom: 60px;
+    gap: 12px;
+}
 
+.cards > div {
+  margin: 10px;
 }
 
 .card {
     width: 240px;
-    border-radius: 3px;
+    border-radius: 10px;
     text-align: center;
     padding: 20px;
     border: 1px solid rgb(230,230,230);
