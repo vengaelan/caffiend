@@ -15,16 +15,16 @@ class MeetingsController < ApplicationController
     # client = get_google_calendar_client current_user
 
     # Named params are retrieved form params and not meeting params. Found out through raise. Need to check with TA.
-    @meeting = Meeting.new()
-    @meeting.location = meeting_params[:location]
-    @meeting.start_datetime = params[:date] + " " + params[:start_time]
-    @meeting.end_datetime = params[:date] + " " + params[:end_time]
+    @meeting = Meeting.new(meeting_params)
+    # @meeting.location = meeting_params[:location]
+    # @meeting.start_datetime = params[:date] + " " + params[:start_time]
+    # @meeting.end_datetime = params[:date] + " " + params[:end_time]
     @meeting.user = current_user
 
     # loop through choices hash and create new choice
-    meeting_params[:choices_attributes].each_value do |value|
-      @meeting.choices.build(value)
-    end
+    # meeting_params[:choices_attributes].each_value do |value|
+    #   @meeting.choices.build(value)
+    # end
     @meeting.save!
 
     # event = get_event(@meeting)
@@ -110,8 +110,8 @@ class MeetingsController < ApplicationController
   def meeting_params
     params
      .require(:meeting)
-     .permit(:date, :start_time, :end_time, :location, :invitee_email,
-             choices_attributes: [:start_datetime, :end_datetime, :location])
+     .permit(:start_datetime, :end_datetime, :location, :invitee_email,
+             choices_attributes: [:id, :start_datetime, :end_datetime, :location, :_destroy])
   end
 
 
