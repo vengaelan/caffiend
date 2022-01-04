@@ -38,7 +38,9 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:id])
 
     if !@meeting.invitee_email
-      @meeting.update(invitee_email: meeting_params[:invitee_email], status: "ACCEPTED")
+      @meeting.update(meeting_params)
+      @meeting.update(status: "ACCEPTED")
+      #@meeting.update(invitee_email: meeting_params[:invitee_email], status: "ACCEPTED")
       client = get_google_calendar_client(@meeting.user)
       event = get_event(@meeting)
       client.insert_event('primary', event, send_updates: "all")
