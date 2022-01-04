@@ -14,17 +14,20 @@ class MeetingsController < ApplicationController
   def create
     # client = get_google_calendar_client current_user
 
-    # Named params are retrieved form params and not meeting params. Found out through raise. Need to check with TA.
     @meeting = Meeting.new(meeting_params)
+    # Named params are retrieved form params and not meeting params. Found out through raise. Need to check with TA.
     # @meeting.location = meeting_params[:location]
     # @meeting.start_datetime = params[:date] + " " + params[:start_time]
     # @meeting.end_datetime = params[:date] + " " + params[:end_time]
+
     @meeting.user = current_user
 
+    # Removed named parameters, choices' attributes can be instatinated on line 17.
     # loop through choices hash and create new choice
     # meeting_params[:choices_attributes].each_value do |value|
     #   @meeting.choices.build(value)
     # end
+
     @meeting.save!
 
     # event = get_event(@meeting)
@@ -41,6 +44,7 @@ class MeetingsController < ApplicationController
       @meeting.update(meeting_params)
       @meeting.update(status: "ACCEPTED")
       #@meeting.update(invitee_email: meeting_params[:invitee_email], status: "ACCEPTED")
+
       client = get_google_calendar_client(@meeting.user)
       event = get_event(@meeting)
       client.insert_event('primary', event, send_updates: "all")
@@ -54,7 +58,7 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:id])
   end
 
-  # CAFFIEND CREATED ACTIONS
+  # -------------------- CAFFIEND CREATED ACTIONS --------------------
 
   # UPCOMING => GET /users/:id (As a user, I can view my upcoming meetings)
   def upcoming
@@ -116,7 +120,7 @@ class MeetingsController < ApplicationController
              choices_attributes: [:id, :start_datetime, :end_datetime, :location, :_destroy])
   end
 
-
+  # Google API Get Event Method
   def get_event meeting
     attendees = [{ email: meeting.invitee_email }] # task[:members].split(',').map{ |t| {email: t.strip} }
     event = Google::Apis::CalendarV3::Event.new({
