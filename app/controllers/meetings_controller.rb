@@ -108,7 +108,10 @@ class MeetingsController < ApplicationController
 
   # STRONG PARAMS
   def meeting_params
-    params.require(:meeting).permit(:date, :start_time, :end_time, :location, :invitee_email, choices_attributes: [:start_datetime, :end_datetime, :location]) # Need to require named parameters from simple form
+    params
+     .require(:meeting)
+     .permit(:date, :start_time, :end_time, :location, :invitee_email,
+             choices_attributes: [:start_datetime, :end_datetime, :location])
   end
 
 

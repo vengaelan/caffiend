@@ -3,6 +3,15 @@
     <h3><%= "Confirm your meeting with #{@meeting.user.first_name}" %></h3>
     <br>
     <%= simple_form_for @meeting do |f| %>
+      <div class="row justify-content-center">
+        <%= f.simple_fields_for :choices do |f| %>
+          <div class= "col-3">
+            <%= render "choice_fields", f: f %>
+          </div>
+        <% end %>
+      </div>
+
+
       <%= f.input :invitee_email, as: :string, label: 'Your email', placeholder: "input your email address", class: 'form-control' %>
       <br>
       <center><%= f.button :submit, "Confirm meeting with #{@meeting.user.first_name}", class: "caffiend-btn" %></center>
