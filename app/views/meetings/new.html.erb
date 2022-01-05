@@ -5,14 +5,14 @@
       <h5>Create a new meeting:</h5>
     </div>
     <div class="col-9">
-      <h5>Options:</h5>
+      <h5>Choices:</h5>
     </div>
   </div>
 
   <%# ------- FORM FOR CREATING MEETING INVITE ------- %>
   <div>
     <%= simple_form_for @meeting do |f| %>
-      <div class="row">
+      <div class="justify-content-center">
         <%# For original invite %>
         <div class="col-3">
           <%= f.input :start_datetime, as: :string, label: "Start Date Time", class: "form-control", input_html: {class: "datetimepicker"} %>
@@ -22,10 +22,16 @@
 
         <%# Choices form %>
         <%= f.simple_fields_for :choices do |f| %>
-          <div class= "col-3">
+
+          <div>
             <%= render "choice_fields", f: f %>
           </div>
+
         <% end %>
+
+          <%# Method to add fields (application helper) %>
+          <%= link_to_add_fields "Add Choice", f, :choices %>
+
       </div>
 
       <%# Div for button %>

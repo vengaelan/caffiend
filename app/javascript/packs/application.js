@@ -26,12 +26,16 @@ import "bootstrap";
 import { initFlatpickr } from "../plugins/flatpickr"; // Flatpickr
 import { initUpdateNavbarOnScroll } from '../components/navbar'; //navbar.js
 import "tippy.js/dist/tippy.css";
+import { init_add_fields } from "../plugins/init_add_fields";
+import { init_remove_fields } from "../plugins/init_remove_fields";
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initFlatpickr(); // Flatpickr
   initUpdateNavbarOnScroll(); // navbar.js
+  init_add_fields();
+  init_remove_fields();
 });
 
 import "controllers"
