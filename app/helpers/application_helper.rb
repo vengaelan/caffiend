@@ -15,5 +15,4 @@ module ApplicationHelper
     ## pass down the link to the fields form
     link_to(name, "#", class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end
-
 end

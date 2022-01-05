@@ -1,43 +1,37 @@
 <div class="containter p-5 mt-5">
-  <%# ------- Div for titles ------- %>
-  <div class="row">
-    <div class="col-3">
-      <h5>Create a new meeting:</h5>
-    </div>
-    <div class="col-9">
-      <h5>Choices:</h5>
-    </div>
-  </div>
 
   <%# ------- FORM FOR CREATING MEETING INVITE ------- %>
   <div>
     <%= simple_form_for @meeting do |f| %>
-      <div class="justify-content-center">
-        <%# For original invite %>
-        <div class="col-3">
-          <%= f.input :start_datetime, as: :string, label: "Start Date Time", class: "form-control", input_html: {class: "datetimepicker"} %>
-          <%= f.input :end_datetime, as: :string, label: "End Date Time", class: "form-control", input_html: {class: "datetimepicker"} %>
-          <%= f.input :location, as: :text, label: 'Location:', placeholder:"eg. 11B Baker street", class: "form-control" %>
-        </div>
 
-        <%# Choices form %>
+      <%# Original instance which sends google calender invite %>
+      <h5>Create a new meeting:</h5>
+
+      <div class="col-3 mt-3">
+        <%= f.input :start_datetime, as: :string, label: "Start Date Time", class: "form-control", input_html: {class: "datetimepicker"} %>
+        <%= f.input :end_datetime, as: :string, label: "End Date Time", class: "form-control", input_html: {class: "datetimepicker"} %>
+        <%= f.input :location, as: :text, label: 'Location:', placeholder:"eg. 11B Baker street", class: "form-control" %>
+      </div>
+
+      <hr>
+
+      <%# Choices nested form %>
+      <h5>Add or Remove Choices:</h5>
+
+      <div class= "row">
         <%= f.simple_fields_for :choices do |f| %>
-
-          <div>
-            <%= render "choice_fields", f: f %>
-          </div>
-
+          <%= render "choice_fields", f: f %>
         <% end %>
 
-          <%# Method to add fields (application helper) %>
-          <%= link_to_add_fields "Add Choice", f, :choices %>
-
+        <%# Method to add fields (application helper) %>
+        <%= link_to_add_fields "Add Choice", f, :choices %>
       </div>
 
       <%# Div for button %>
       <div class="text-center">
         <%= f.button :submit, "Create Meeting", class: "btn btn-dark" %>
       </div>
+
     <% end %>
   </div>
 </div>
