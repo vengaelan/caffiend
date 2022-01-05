@@ -15,8 +15,8 @@ export default class extends Controller {
   // No trigger event needed as we initialize a tooltip using tippy.js where trigger event is included
 
   selection() {
-    $(".choice").removeClass("clicked")
-    event.currentTarget.classList.add("clicked")
+    $(".choice").removeClass("selected")
+    event.currentTarget.classList.add("selected")
     this.startDateTarget.value = event.params["start"]
     this.endDateTarget.value = event.params["end"]
     this.locationTarget.value = event.params["location"]
