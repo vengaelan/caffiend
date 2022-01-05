@@ -1,19 +1,20 @@
-<div class="invite-container py-5 mt-5">
+<div class="invite-container py-5 mt-5" data-controller="choice">
   <div class="invite-box">
     <h3><%= "Confirm your meeting with #{@meeting.user.first_name}" %></h3>
     <br>
 
     <%= simple_form_for @meeting do |f| %>
       <%# Show Choices %>
-      <div class="row justify-content-center">
-        <%= f.simple_fields_for :choices do |f| %>
-          <div class= "col-3">
-            <%= render "choice_fields", f: f %>
-          </div>
+      <div class="container">
+        <% @meeting.choices.each do |c| %>
+          <%= render "choice_selection", choice: c %>
         <% end %>
       </div>
 
       <%# Input email & Confirmation %>
+      <%= f.input :start_datetime, as: :hidden, input_html: { value: @meeting.start_datetime, data: { choice_target: "startDate"} } %>
+      <%= f.input :end_datetime, as: :hidden, input_html: { value: @meeting.end_datetime, data: { choice_target: "endDate"} }  %>
+      <%= f.input :location, as: :hidden, input_html: { value: @meeting.location, data: { choice_target: "location"} }  %>
       <%= f.input :invitee_email, as: :string, label: 'Your email', placeholder: "input your email address", class: 'form-control' %>
       <br>
       <center><%= f.button :submit, "Confirm meeting with #{@meeting.user.first_name}", class: "caffiend-btn" %></center>
