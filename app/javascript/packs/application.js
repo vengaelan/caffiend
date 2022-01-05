@@ -23,15 +23,19 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-import { initFlatpickr } from "../plugins/flatpickr"; // Flatpickr
+import { initFlatpickr } from "../plugins/flatpickr"; // Flatpickr for date time fields in form
 import { initUpdateNavbarOnScroll } from '../components/navbar'; //navbar.js
 import "tippy.js/dist/tippy.css";
+import { init_add_fields } from "../plugins/init_add_fields"; // Add fields in nested form
+import { init_remove_fields } from "../plugins/init_remove_fields"; //Remove fields in nested form
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initFlatpickr(); // Flatpickr
   initUpdateNavbarOnScroll(); // navbar.js
+  init_add_fields(); // Add fields in nested form
+  init_remove_fields(); // Remove fields in nested form
 });
 
 import "controllers"
