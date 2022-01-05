@@ -1,8 +1,7 @@
 const init_remove_fields = () => {
 
   $('.simple_form').on('click', '.remove_fields', function (event) {
-    console.log("clicked!")
-    $(this).prev('input[type="hidden"]').val('1');
+    $(this).prev().find('input[type=hidden]').val('true');
     $(this).closest('.fields').hide();
     return event.preventDefault();
   });
