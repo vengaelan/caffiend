@@ -15,6 +15,14 @@ class MeetingsController < ApplicationController
     # client = get_google_calendar_client current_user
 
     @meeting = Meeting.new(meeting_params)
+
+    # If only 1 choice, meeting model updated with choice attributes
+    if @meeting.choices.length == 1
+      choice = @meeting.choices.first
+      @meeting.start_datetime = choice.start_datetime
+      @meeting.end_datetime = choice.end_datetime
+      @meeting.location = choice.location
+    end
     # Named params are retrieved form params and not meeting params. Found out through raise. Need to check with TA.
     # @meeting.location = meeting_params[:location]
     # @meeting.start_datetime = params[:date] + " " + params[:start_time]
@@ -70,6 +78,7 @@ class MeetingsController < ApplicationController
   def past
     past_meetings = Meeting.where(status: "COMPLETED")
   end
+
 
   # Google Calendar Client Method
   def get_google_calendar_client current_user

@@ -15,8 +15,13 @@ export default class extends Controller {
   // No trigger event needed as we initialize a tooltip using tippy.js where trigger event is included
 
   selection() {
+    // Removes the selected class from all choices to prevent multiple choices to have the selected class after clicking
     $(".choice").removeClass("selected")
+    // Adds selected class to the clicked choice
     event.currentTarget.classList.add("selected")
+    // Submit button enabled once a selection has been clicked
+    $(".caffiend-btn").prop("disabled", false)
+    // Update hidden meeting input fields
     this.startDateTarget.value = event.params["start"]
     this.endDateTarget.value = event.params["end"]
     this.locationTarget.value = event.params["location"]
