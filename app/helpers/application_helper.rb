@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-  def link_to_add_fields(name, form, association)
+  def link_to_add_fields(name, form, association, locals={})
     ## create a new object from the association (:choices)
     new_object = form.object.send(association).klass.new
 
@@ -13,6 +13,7 @@ module ApplicationHelper
     end
 
     ## pass down the link to the fields form
-    link_to(name, "#", class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
+    ##link_to(name, "#", class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
+    link_to(name, '#', class: [locals[:class], "add_fields"], data: {id: id, fields: fields.gsub("\n", "")})
   end
 end

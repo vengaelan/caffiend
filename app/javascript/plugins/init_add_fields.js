@@ -15,6 +15,8 @@ const init_add_fields = () => {
     $(this).before($(this).data("fields").replace(regexp, time));
     event.preventDefault();
 
+    $(this).hide();
+
     // Flatpickr plugin needs to run again to capture new fields
     return initFlatpickr();
   });

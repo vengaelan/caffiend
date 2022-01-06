@@ -6,7 +6,8 @@ const init_remove_fields = () => {
 
     // choice fields need to be removed
     $(this).closest('.fields').hide();
-
+    $(this).parent().next('.add_fields').show()
+    //('.add_fields').show();
     return event.preventDefault();
   });
 }
