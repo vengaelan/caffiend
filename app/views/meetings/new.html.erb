@@ -20,7 +20,14 @@
 
       <div class= "row">
         <%= f.simple_fields_for :choices do |f| %>
-          <%= render "choice_fields", f: f %>
+
+          <div class="fields col-4 mt-3">
+            <%= f.input :start_datetime, as: :string, label: "Start Date Time", class: "form-control", input_html: {class: "datetimepicker"} %>
+            <%= f.input :end_datetime, as: :string, label: "End Date Time", class: "form-control", input_html: {class: "datetimepicker"} %>
+            <%= f.input :location, as: :text, label: 'Location:', placeholder:"eg. 11B Baker street", class: "form-control" %>
+          </div>
+
+          <%# render "choice_fields", f: f %>
         <% end %>
 
         <%# Method to add fields (application helper) %>
