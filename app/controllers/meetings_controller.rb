@@ -7,7 +7,8 @@ class MeetingsController < ApplicationController
   # NEW => GET /users/:id (As a user, I can create a new meeting)
   def new
     @meeting = Meeting.new
-    3.times { @meeting.choices.build }
+    #3.times { @meeting.choices.build }
+    @meeting.choices.build
   end
 
   # CREATE => GET /users/:id (As a user, I can create a new meeting + Send a google event w notif)

@@ -3,6 +3,7 @@
 .simple-calendar {
   table {
     min-height: 80vh;
+    box-shadow: 2px 2px 8px #14213D;
   }
   .td {
     width: 80px;
@@ -43,4 +44,25 @@
   background: #1FDAFF;
   opacity: 1;
   color: white;
+}
+
+@media(max-width: 320px) {
+  .calendar-style .caffiend-btn {
+    font-size: 8px;
+  }
+  .calendar-style .btn-secondary {
+  background-color: #691FFF;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 8px;
+}
+}
+
+@media(max-width: 425px) {
+  .calendar-style .caffiend-btn {
+    font-size: 8px;
+  }
+  .calendar-style .btn-secondary {
+  font-size: 8px;
+}
 }
