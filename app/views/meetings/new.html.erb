@@ -7,16 +7,13 @@
       <%# Original instance which sends google calender invite %>
       <h5>Create a new meeting:</h5>
 
-      <div class="col-3 my-3">
-        <%= f.input :start_datetime, as: :string, label: "Start Date Time", class: "form-control", input_html: {class: "datetimepicker"} %>
-        <%= f.input :end_datetime, as: :string, label: "End Date Time", class: "form-control", input_html: {class: "datetimepicker"} %>
-        <%= f.input :location, as: :text, label: 'Location:', placeholder:"eg. 11B Baker street", class: "form-control" %>
-      </div>
-
-      <hr>
+      <%# <div class="col-3 my-3"> %>
+        <%# f.input :start_datetime, as: :string, label: "Start Date Time", class: "form-control", input_html: {class: "datetimepicker"} %>
+        <%# f.input :end_datetime, as: :string, label: "End Date Time", class: "form-control", input_html: {class: "datetimepicker"} %>
+        <%# f.input :location, as: :text, label: 'Location:', placeholder:"eg. 11B Baker street", class: "form-control" %>
+      <%# </div> %>
 
       <%# Choices nested form %>
-      <h5>Add or Remove Choices:</h5>
 
       <div class="row">
         <%= f.simple_fields_for :choices do |f| %>
