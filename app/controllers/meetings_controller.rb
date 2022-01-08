@@ -1,5 +1,5 @@
 require "google/apis/calendar_v3"
-require "google/api_client/client_secrets.rb"
+require "google/api_client/client_secrets"
 require "securerandom"
 
 class MeetingsController < ApplicationController
@@ -44,8 +44,7 @@ class MeetingsController < ApplicationController
     @meeting_user.meeting = @meeting
     @meeting_user.host = true
     @meeting_user.save!
-    # event = get_event(@meeting)
-    # client.insert_event('primary', event, send_updates: "all")
+
     flash[:notice] = 'You successfully created a new meeting!'
 
     redirect_to copy_invite_meeting_path(@meeting)
@@ -156,13 +155,11 @@ class MeetingsController < ApplicationController
       description: meeting.location,
       id: "caffiend#{MeetingUser.where(meeting: meeting, host: true).first.id}",
       start: {
-        date_time: meeting.start_datetime.iso8601, #Time.new(meeting.start_datetime).to_datetime.rfc3339,
+        date_time: meeting.start_datetime.iso8601,
         time_zone: "Asia/Singapore"
-        # date_time: '2019-09-07T09:00:00-07:00',
-        # time_zone: 'Asia/Kolkata',
       },
       end: {
-        date_time: meeting.end_datetime.iso8601, #Time.new(meeting.end_datetime).to_datetime.rfc3339,
+        date_time: meeting.end_datetime.iso8601,
         time_zone: "Asia/Singapore"
       },
       attendees: attendees,
