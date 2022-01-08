@@ -4,6 +4,7 @@ class CreateMeetingUsers < ActiveRecord::Migration[6.1]
 
       t.references :user, foreign_key: true
       t.references :meeting, foreign_key: true
+      t.boolean :host, default: false
 
       t.timestamps
     end

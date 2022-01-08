@@ -1,5 +1,6 @@
 class Meeting < ApplicationRecord
   # References
+  has_many :meeting_users, dependent: :destroy
   has_many :users, through: :meeting_users
   has_many :choices, dependent: :destroy
   accepts_nested_attributes_for :choices, reject_if: :all_blank, allow_destroy: true
