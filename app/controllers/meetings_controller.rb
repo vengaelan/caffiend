@@ -54,21 +54,24 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:id])
     @host = MeetingUser.where(meeting: @meeting, host: true).first.user
 
-    if !@meeting.invitee_email
-      @meeting.update(meeting_params)
-      @meeting.update(status: "ACCEPTED")
-      if User.find_by_email(@meeting.invitee_email)
-        add_meeting_to_existing_user(@meeting.invitee_email, @meeting)
-      end
+    @meeting.update(meeting_params)
+    @meeting.update(status: "ACCEPTED")
+    if User.find_by_email(@meeting.invitee_email)
+      add_meeting_to_existing_user(@meeting.invitee_email, @meeting)
+    end
 
-      client = get_google_calendar_client(@host)
+    client = get_google_calendar_client(@host)
+    event_id = "caffiend#{MeetingUser.where(meeting: @meeting, host: true).first.id}"
+
+    if @meeting.meeting_link
+      event = client.get_event('primary', event_id)
+      event.attendees << { email: @meeting.invitee_email }
+      client.update_event('primary', event.id, event, send_updates: "all")
+    else
       event = get_event(@meeting)
       client.insert_event('primary', event, send_updates: "all", conference_data_version: "1")
-
-      unless @meeting.meeting_link
-        meet_link = client.get_event('primary', "caffiend#{MeetingUser.where(meeting: @meeting, host: true).first.id}").hangout_link
-        @meeting.update(meeting_link: meet_link)
-      end
+      meet_link = client.get_event('primary', event_id).hangout_link
+      @meeting.update(meeting_link: meet_link)
     end
 
     redirect_to meeting_confirmation_meeting_path(@meeting)
@@ -167,8 +170,8 @@ class MeetingsController < ApplicationController
       reminders: {
         use_default: false,
         overrides: [
-          Google::Apis::CalendarV3::EventReminder.new(reminder_method:"popup", minutes: 10),
-          Google::Apis::CalendarV3::EventReminder.new(reminder_method:"email", minutes: 20)
+          Google::Apis::CalendarV3::EventReminder.new(reminder_method: "popup", minutes: 10),
+          Google::Apis::CalendarV3::EventReminder.new(reminder_method: "email", minutes: 20)
         ]
       },
       notification_settings: {
@@ -178,15 +181,21 @@ class MeetingsController < ApplicationController
                         {type: 'event_cancellation', method: 'email'},
                         {type: 'event_response', method: 'email'},
                        ]
-      },
-      conference_data: {
+      }, 'primary': true
+    })
+
+    if meeting.meeting_link
+      event.hangout_link = meeting.meeting_link
+    else
+      event.conference_data = {
         create_request: {
           conference_solution_key: {
             type: 'hangoutsMeet'
           }, request_id: SecureRandom.uuid
         }
-      },'primary': true
-    })
+      }
+    end
+    event
   end
 
   def add_meeting_to_existing_user(email, meeting)
