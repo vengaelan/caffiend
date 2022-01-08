@@ -1,29 +1,32 @@
-.card-container {
-  width: 900px;
+.content-container {
   margin: auto;
 }
 
-.cards {
-    display: inline-flex;
-    flex-wrap: wrap;
-    //justify-content: space-between;
-    margin-bottom: 60px;
-    gap: 12px;
+.content-cards {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    //gap: 12px;
 }
 
-.cards > div {
+.content-cards > div {
   margin: 10px;
 }
 
-.card {
-    width: 240px;
-    border-radius: 10px;
+.content-card {
+    //width: 240px;
+    //border-radius: 10px;
     text-align: center;
     padding: 20px;
-    border: 1px solid rgb(230,230,230);
+    //border: 1px solid rgb(230,230,230);
 }
 
-.card p {
+.content-card:hover {
+  transform: scale(1.1);
+}
+
+
+.content-card p {
   font-size: 18px;
   font-family: 'Open-sans', sans-serif;
   text-align: center;
@@ -31,7 +34,19 @@
 
 }
 
-.card h4 {
+.content-card h4 {
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
+}
+
+.content-title h3 {
+  font-weight: bolder;
+}
+
+.content-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  margin-bottom: 20px;
 }

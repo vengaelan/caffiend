@@ -10,7 +10,8 @@ Rails.application.routes.draw do
       get 'past'
     end
     member do
-      get 'send_invite' # to send external link to invitee
+      get 'copy_invite' # User's page to copy invite to Invitee
+      get 'send_invite' # Invite's page to confirm invite
       get 'meeting_confirmation' # Confirmation after invitee enters email
     end
   end

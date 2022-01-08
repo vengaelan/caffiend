@@ -28,6 +28,7 @@ import { initUpdateNavbarOnScroll } from '../components/navbar'; //navbar.js
 import "tippy.js/dist/tippy.css";
 import { init_add_fields } from "../plugins/init_add_fields"; // Add fields in nested form
 import { init_remove_fields } from "../plugins/init_remove_fields"; //Remove fields in nested form
+import { init_copy_to_clipboard } from "../plugins/init_copy_to_clipboard";
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -36,6 +37,7 @@ document.addEventListener('turbolinks:load', () => {
   initUpdateNavbarOnScroll(); // navbar.js
   init_add_fields(); // Add fields in nested form
   init_remove_fields(); // Remove fields in nested form
+  init_copy_to_clipboard();
 });
 
 import "controllers"

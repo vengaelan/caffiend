@@ -1,0 +1,20 @@
+
+<div class="invite-container py-5 mt-5">
+  <div class="invite-box">
+    <h3><%= "Meeting link is generated for you below" %></h3>
+
+    <br>
+
+    <div class="container">
+
+      <div class="copy-text input-group mb-3">
+        <input type="text" class="form-control text" value="<%= request.base_url + send_invite_meeting_path(@meeting) %>" readonly >
+        <div class="input-group-append">
+          <button class="btn btn-dark fa fa-clone" type="button" ></button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
