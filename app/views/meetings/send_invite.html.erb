@@ -1,6 +1,6 @@
 <div class="invite-container py-5 mt-5" data-controller="choice">
   <div class="invite-box">
-    <h3><%= "Confirm your meeting with #{@meeting.user.first_name}" %></h3>
+    <h3><%= "Confirm your meeting with #{@meeting.users.first.first_name}" %></h3>
 
     <br>
 
@@ -33,7 +33,7 @@
 
       <br>
 
-      <center><%= f.button :submit, "Confirm meeting with #{@meeting.user.first_name}", class: "caffiend-btn", disabled: @meeting.choices.length > 1 %></center>
+      <center><%= f.button :submit, "Confirm meeting with #{@meeting.users.first.first_name}", class: "caffiend-btn", disabled: @meeting.choices.length > 1 %></center>
     <% end %>
   </div>
 </div>

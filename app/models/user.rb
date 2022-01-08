@@ -6,7 +6,8 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:google_oauth2] # Google Omniauth
 
   # References
-  has_many :meetings
+  has_many :meeting_users, dependent: :destroy
+  has_many :meetings, through: :meeting_users
 
   # Validations
   validates :first_name, :last_name, presence: true
@@ -27,6 +28,12 @@ class User < ApplicationRecord
         uid: data.uid,
         image: data.info['image']
       )
+      Meeting.where(invitee_email: data.info['email']).each do |m|
+        mu = MeetingUser.new
+        mu.user = user
+        mu.meeting = m
+        mu.save!
+      end
     end
     user
   end

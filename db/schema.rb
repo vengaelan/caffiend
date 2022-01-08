@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_29_111655) do
+ActiveRecord::Schema.define(version: 2022_01_08_024558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 2021_12_29_111655) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["meeting_id"], name: "index_choices_on_meeting_id"
+  end
+
+  create_table "meeting_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "meeting_id"
+    t.boolean "host", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["meeting_id"], name: "index_meeting_users_on_meeting_id"
+    t.index ["user_id"], name: "index_meeting_users_on_user_id"
   end
 
   create_table "meetings", force: :cascade do |t|
@@ -59,4 +69,6 @@ ActiveRecord::Schema.define(version: 2021_12_29_111655) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "meeting_users", "meetings"
+  add_foreign_key "meeting_users", "users"
 end

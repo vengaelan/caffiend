@@ -30,7 +30,7 @@ class MeetingsController < ApplicationController
     # @meeting.start_datetime = params[:date] + " " + params[:start_time]
     # @meeting.end_datetime = params[:date] + " " + params[:end_time]
 
-    @meeting.user = current_user
+    # @meeting.user = current_user
 
     # Removed named parameters, choices' attributes can be instatinated on line 17.
     # loop through choices hash and create new choice
@@ -39,7 +39,11 @@ class MeetingsController < ApplicationController
     # end
 
     @meeting.save!
-
+    @meeting_user = MeetingUser.new()
+    @meeting_user.user = current_user
+    @meeting_user.meeting = @meeting
+    @meeting_user.host = true
+    @meeting_user.save!
     # event = get_event(@meeting)
     # client.insert_event('primary', event, send_updates: "all")
     flash[:notice] = 'You successfully created a new meeting!'
@@ -49,20 +53,23 @@ class MeetingsController < ApplicationController
 
   def update
     @meeting = Meeting.find(params[:id])
+    @host = MeetingUser.where(meeting: @meeting, host: true).first.user
 
     if !@meeting.invitee_email
       @meeting.update(meeting_params)
       @meeting.update(status: "ACCEPTED")
-      #@meeting.update(invitee_email: meeting_params[:invitee_email], status: "ACCEPTED")
+      if User.find_by_email(@meeting.invitee_email)
+        add_meeting_to_existing_user(@meeting.invitee_email, @meeting)
+      end
 
-      client = get_google_calendar_client(@meeting.user)
+      client = get_google_calendar_client(@host)
       event = get_event(@meeting)
       client.insert_event('primary', event, send_updates: "all", conference_data_version: "1")
       meet_link = client.get_event('primary', MeetingUser.where(meeting: meeting, host: true).first.id).hangout_link
       raise
     end
 
-    redirect_to  meeting_confirmation_meeting_path(@meeting)
+    redirect_to meeting_confirmation_meeting_path(@meeting)
   end
 
   # SHOW => GET /meetings/:id (As a user, I can generate a meeting invite link/ view meeting)
@@ -75,12 +82,12 @@ class MeetingsController < ApplicationController
   # UPCOMING => GET /users/:id (As a user, I can view my upcoming meetings)
   def upcoming
     start_date = params.fetch(:start_date, Date.today).to_date
-    @upcoming_meetings = Meeting.where(start_datetime: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week, status: ["ACCEPTED", "PENDING"])
+    @upcoming_meetings = current_user.meetings.where(start_datetime: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week, status: ["ACCEPTED", "PENDING"])
   end
 
   # PAST => GET /users/:id (As a user, I can view my past meetings)
   def past
-    past_meetings = Meeting.where(status: "COMPLETED")
+    past_meetings = current_user.meetings.where(status: "COMPLETED")
   end
 
 
@@ -179,6 +186,13 @@ class MeetingsController < ApplicationController
         }
       },'primary': true
     })
+  end
+
+  def add_meeting_to_existing_user(email, meeting)
+    @meeting_user = MeetingUser.new
+    @meeting_user.meeting = meeting
+    @meeting_user.user = User.find_by_email(email)
+    @meeting_user.save!
   end
 
 end
