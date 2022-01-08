@@ -30,6 +30,7 @@ export default class extends Controller {
     allowHTML: true,
     placement: 'right',
     theme: 'light',
+    interactive: true
     })
   }
 
