@@ -2,45 +2,59 @@
 <div class="home-container">
   <div class="home-banner">
     <div class="banner-text">
-      <h1>Super charge<br> your coffee chats</h1>
+      <h1>Super charge<br> your <span class="text-highlight">coffee chats</span></h1>
       <p>Millions of young professionals - from startups to large enterprises - use Caffiend's software to schedule coffee chats easily.</p>
     </div>
   </div>
   <br>
 <!--homepage contents - cards-->
+<div class="content-container">
   <div class="content-title my-4">
-    <center><h3>How Caffiend works</h3></center>
-  </div>
+      <center><h3>How <span class="text-highlight">Caffiend</span> works</h3></center>
+    </div>
   <br>
-  <div class="card-container mb-3">
-    <div class="cards">
-      <div class="card">
-        <div class="border-bottom mb-2">
+
+  <div class="content-cards">
+    <div class="row justify-content-center">
+      <div class="content-card col-lg-4 col-md-8 col-sm-10">
+        <div class="mb-2">
+          <%= image_tag("create.png", alt:"freekpik", class:"content-img") %>
           <h4>Create</h4>
         </div>
           <p>Create a meeting easily using Caffiend. 🗓️</p>
       </div>
 
-      <div class="card">
-        <div class="border-bottom mb-2">
+      <div class="content-card col-lg-4 col-md-8 col-sm-10">
+        <div class="mb-2">
+          <%= image_tag("invitation.png", alt:"freekpik", class:"content-img") %>
           <h4>Invite</h4>
         </div>
           <p>Send a Google invite over to your invitee. ✉️</p>
       </div>
-      <div class="card">
-        <div class="border-bottom mb-2">
+
+      <div class="content-card col-lg-4 col-md-8 col-sm-10">
+        <div class="mb-2">
+          <%= image_tag("chat.png", alt:"freekpik", class:"content-img") %>
           <h4>Chat</h4>
         </div>
           <p>Look forward to your coffee chat! ☕</p>
       </div>
-  </div>
-<!--homepage contents - columns-->
-  <div class="border-top py-3 mt-4"></div>
-    <center><h3>Hassle free scheduling to take out the work in networking.</h3></center>
-  <br>
-    <div class="columns row">
 
-      <div class="column">
+  </div>
+
+  </div>
+</div>
+
+<!--homepage contents - columns-->
+
+<div class="column-container">
+  <div class="content-title">
+  <br>
+    <center><h3><span class="text-highlight">Hassle free</span> scheduling to take out the work in <span class="text-highlight">networking</span></h3></center>
+  </div>
+  <br>
+    <div class="columns row justify-content-center">
+      <div class="column col-lg-3 col-md-8 col-sm-10">
         <%= image_tag("calendar.png", alt:"freekpik", class:"column-img") %>
           <div class="column-text">
             <h5>Seamless Scheduling</h5>
@@ -48,9 +62,9 @@
           </div>
       </div>
 
-      <div class="divder border-right mx-2"></div>
+      <!-- <div class="divder border-right mx-2"></div> -->
 
-      <div class="column">
+      <div class="column col-lg-3 col-md-8 col-sm-10">
         <%= image_tag("instant-message.png", alt:"juicy fish", class:"column-img") %>
           <div class="column-text">
             <h5>Instant Booking</h5>
@@ -58,9 +72,9 @@
           </div>
       </div>
 
-      <div class="divder border-right mx-2"></div>
+      <!-- <div class="divder border-right mx-2"></div> -->
 
-      <div class="column">
+      <div class="column col-lg-3 col-md-8 col-sm-10">
         <%= image_tag("reminder.png", alt:"freepik", class:"column-img") %>
           <div class="column-text">
             <h5>Reminders</h5>
@@ -68,9 +82,9 @@
           </div>
       </div>
 
-      <div class="divder border-right mx-2"></div>
+      <!-- <div class="divder border-right mx-2"></div> -->
 
-      <div class="column">
+      <div class="column col-lg-3 col-md-8 col-sm-10">
         <%= image_tag("video-conference.png", alt:"freepik", class:"column-img") %>
           <div class="column-text">
             <h5>Video Conferencing</h5>
@@ -79,5 +93,6 @@
       </div>
 
     </div>
+</div>
 
 </div>
