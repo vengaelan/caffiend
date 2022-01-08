@@ -1,13 +1,17 @@
+.column-container {
+  padding: 50px;
+  background-color: white;
+}
 .columns {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 30px;
-  margin-bottom: 50px;
+  //margin-top: 30px;
+  //margin-bottom: 50px;
 }
 
 .column {
-  width: 190px;
-  margin-right: 10px;
+  //width: 190px;
+  //margin-right: 10px;
   align-content: center;
 }
 
@@ -15,7 +19,7 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 20%;
 }
 
 .column-text {
