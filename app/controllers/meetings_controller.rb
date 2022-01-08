@@ -43,7 +43,7 @@ class MeetingsController < ApplicationController
     # client.insert_event('primary', event, send_updates: "all")
     flash[:notice] = 'You successfully created a new meeting!'
 
-    redirect_to send_invite_meeting_path(@meeting)
+    redirect_to copy_invite_meeting_path(@meeting)
   end
 
   def update
@@ -110,6 +110,10 @@ class MeetingsController < ApplicationController
       redirect_to :back
     end
     client
+  end
+
+  def copy_invite
+    @meeting = Meeting.find(params[:id])
   end
 
   def send_invite
