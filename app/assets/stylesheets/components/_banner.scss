@@ -9,10 +9,11 @@
 }
 
 .banner-text {
-  width: 500px;
+  width: 600px;
   margin-left: 100px;
   color: #F6F9FC;
   opacity: 0.8;
+  //padding-left: 80px;
 }
 
 .banner-text:hover {
@@ -28,4 +29,9 @@
   font-size: 16px;
   font-family: 'Open-sans', sans-serif;
   font-weight: lighter;
+}
+
+.text-highlight {
+  color: #1FDAFF;
+  text-shadow: 1px 1px 1px lightgray;
 }

@@ -1,5 +1,5 @@
 <%#= Navbar for all pages %>
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top", style="background-color: #EDF2F4;">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top", style="background-color: #691fff;">
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "caffiend-logo.png" %>
   <% end %>
@@ -16,7 +16,7 @@
           <%#= link_to "Home", "#", class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Dashboard", user_path(current_user), class: "nav-link" %>
+          <%= link_to "Dashboard", user_path(current_user), class: "nav-link", style: "color: white" %>
         </li>
         <li class="nav-item dropdown">
           <%= image_tag (current_user.image ? current_user.image : "default-user.png"), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -28,7 +28,7 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link btn-login" %>
+          <%= link_to "Login", new_user_session_path, class: "nav-link btn-login", style: "color: white" %>
           </li> &nbsp;
           <li class="nav-item">
           <%= link_to "Sign up", new_user_registration_path, class: "nav-link btn-signup", style: "color: white" %>
