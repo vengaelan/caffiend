@@ -1,5 +1,6 @@
 require "google/apis/calendar_v3"
 require "google/api_client/client_secrets.rb"
+require "securerandom"
 
 class MeetingsController < ApplicationController
   CALENDAR_ID = 'primary'
@@ -56,7 +57,9 @@ class MeetingsController < ApplicationController
 
       client = get_google_calendar_client(@meeting.user)
       event = get_event(@meeting)
-      client.insert_event('primary', event, send_updates: "all")
+      client.insert_event('primary', event, send_updates: "all", conference_data_version: "1")
+      meet_link = client.get_event('primary', MeetingUser.where(meeting: meeting, host: true).first.id).hangout_link
+      raise
     end
 
     redirect_to  meeting_confirmation_meeting_path(@meeting)
@@ -141,6 +144,7 @@ class MeetingsController < ApplicationController
       summary: 'CAFFIEND SESSION',
       location: meeting.location,
       description: meeting.location,
+      id: MeetingUser.where(meeting: meeting, host: true).first.id,
       start: {
         date_time: meeting.start_datetime.iso8601, #Time.new(meeting.start_datetime).to_datetime.rfc3339,
         time_zone: "Asia/Singapore"
@@ -166,7 +170,14 @@ class MeetingsController < ApplicationController
                         {type: 'event_cancellation', method: 'email'},
                         {type: 'event_response', method: 'email'},
                        ]
-      }, 'primary': true
+      },
+      conference_data: {
+        create_request: {
+          conference_solution_key: {
+            type: 'hangoutsMeet'
+          }, request_id: SecureRandom.uuid
+        }
+      },'primary': true
     })
   end
 
