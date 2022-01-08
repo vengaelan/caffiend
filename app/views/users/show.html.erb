@@ -11,38 +11,25 @@
         <%= image_tag (current_user.image ? current_user.image : "default-user.png"), class: "profile-img" %>
         <h4><strong> <%= @user.first_name %> <%= @user.last_name %> </strong></h4>
 
-        <div class="user-infos">
-        <!-- <div class="user-infos" data-controller="edit-info" data-edit-info-target="infos"> -->
-          <i class="fas fa-pen fa-xs ml-2" data-action="click->edit-info#displayForm"></i>
-          <h4>About</h4>
-          <p><%= @user.about =%></p>
-          <br>
-          <h4>Description</h4>
-          <p> <%= @user.description %></p>
-        </div>
-      </div>
+          <div class="user-infos">
+          <!-- <div class="user-infos" data-controller="edit-info" data-edit-info-target="infos"> -->
+            <i class="fas fa-pen fa-xs ml-2" data-action="click->edit-info#displayForm"></i>
+            <h4>About</h4>
+            <p><%= @user.about =%></p>
+            <br>
+            <h4>Description</h4>
+            <p> <%= @user.description %></p>
+          </div>
 
       <%#= simple_form_for @user, html: { class: user.errors.any? ? '' : 'd-none', data: { edit_info_target: 'form', action: 'submit->edit-user#update' } } do |f| %>
-      <div class="user-edit">
-        <%= simple_form_for @user do |f| %>
-        <%= f.input :about %>
-        <%= f.input :description %>
-        <br>
-        <%= f.submit %>
-        <% end %>
-      </div>
-        <!--<p> Full Stack at Kopitiam </p> <%# placeholder for LinkedIn Headline API %>
-      </div>
-      <div class="user-description">
-        <p> Description </p>
-        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-        <p> LinkedIn API </p>
-        <ul>
-          <li> Kopitiam </li>
-          <li> Food Dynasty </li>
-          <li> Food Opera </li>
-          <li> Food Junction </li>
-        </ul> -->
+        <div class="user-edit">
+          <%= simple_form_for @user do |f| %>
+          <%= f.input :about %>
+          <%= f.input :description %>
+          <br>
+          <%= f.submit %>
+          <% end %>
+        </div>
       </div>
     </div>
 
