@@ -59,6 +59,8 @@ class MeetingsController < ApplicationController
     @meeting.update(status: "ACCEPTED")
     if User.find_by_email(@meeting.invitee_email.last)
       add_meeting_to_existing_user(@meeting.invitee_email.last, @meeting)
+    else
+      add_meeting_to_non_user(@meeting.invitee_email.last, @meeting)
     end
 
     client = get_google_calendar_client(@host)
@@ -204,6 +206,13 @@ class MeetingsController < ApplicationController
     @meeting_user.meeting = meeting
     @meeting_user.user = User.find_by_email(email)
     @meeting_user.save!
+  end
+
+  def add_meeting_to_non_user(email, meeting)
+    @non_meeting_user = MeetingNonUser.new
+    @non_meeting_user.meeting = meeting
+    @non_meeting_user.non_user_email = email
+    @non_meeting_user.save!
   end
 
 end

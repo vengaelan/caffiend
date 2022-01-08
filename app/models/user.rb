@@ -28,6 +28,15 @@ class User < ApplicationRecord
         uid: data.uid,
         image: data.info['image']
       )
+      MeetingNonUser.where(non_user_email: user.email).each do |meeting_non_user|
+        meeting = meeting_non_user.meeting
+        mu = MeetingUser.new
+        mu.meeting = meeting
+        mu.user = user
+        mu.save!
+        meeting_non_user.destroy!
+      end
+
       # Meeting.where(invitee_email: Meeting.pluck(:invitee_email).flatten).each do |m|
       #   mu = MeetingUser.new
       #   mu.user = user
