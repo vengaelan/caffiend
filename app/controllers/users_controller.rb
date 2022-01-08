@@ -9,12 +9,13 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = current_user
     @user.update(user_params)
 
-    # respond_to do |format|
-    #   format.html { redirect_to users_path }
-    #   format.text { render partial: 'users/user_infos', locals: { user: @user }, formats: [:html] }
-    # end
+    respond_to do |format|
+      format.html { redirect_to user_path }
+      format.text { render partial: 'users/user_info', locals: { user: @user }, formats: [:html] }
+    end
   end
 
   private
