@@ -154,6 +154,7 @@ class MeetingsController < ApplicationController
       location: meeting.location,
       description: meeting.location,
       id: "caffiend#{MeetingUser.where(meeting: meeting, host: true).first.id}",
+      color_id: '3',
       start: {
         date_time: meeting.start_datetime.iso8601,
         time_zone: "Asia/Singapore"
