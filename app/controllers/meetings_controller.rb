@@ -54,10 +54,11 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:id])
     @host = MeetingUser.where(meeting: @meeting, host: true).first.user
 
-    @meeting.update(meeting_params)
+    @meeting.invitee_email << meeting_params[:invitee_email]
+    @meeting.save!
     @meeting.update(status: "ACCEPTED")
-    if User.find_by_email(@meeting.invitee_email)
-      add_meeting_to_existing_user(@meeting.invitee_email, @meeting)
+    if User.find_by_email(@meeting.invitee_email.last)
+      add_meeting_to_existing_user(@meeting.invitee_email.last, @meeting)
     end
 
     client = get_google_calendar_client(@host)
@@ -65,7 +66,7 @@ class MeetingsController < ApplicationController
 
     if @meeting.meeting_link
       event = client.get_event('primary', event_id)
-      event.attendees << { email: @meeting.invitee_email }
+      event.attendees << { email: @meeting.invitee_email.last }
       client.update_event('primary', event.id, event, send_updates: "all")
     else
       event = get_event(@meeting)
@@ -151,7 +152,7 @@ class MeetingsController < ApplicationController
 
   # Google API Get Event Method
   def get_event meeting
-    attendees = [{ email: meeting.invitee_email }] # task[:members].split(',').map{ |t| {email: t.strip} }
+    attendees = [{ email: meeting.invitee_email.last }] # task[:members].split(',').map{ |t| {email: t.strip} }
     event = Google::Apis::CalendarV3::Event.new({
       summary: 'CAFFIEND SESSION',
       location: meeting.location,

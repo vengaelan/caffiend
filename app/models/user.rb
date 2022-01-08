@@ -28,12 +28,12 @@ class User < ApplicationRecord
         uid: data.uid,
         image: data.info['image']
       )
-      Meeting.where(invitee_email: data.info['email']).each do |m|
-        mu = MeetingUser.new
-        mu.user = user
-        mu.meeting = m
-        mu.save!
-      end
+      # Meeting.where(invitee_email: Meeting.pluck(:invitee_email).flatten).each do |m|
+      #   mu = MeetingUser.new
+      #   mu.user = user
+      #   mu.meeting = m
+      #   mu.save!
+      # end
     end
     user
   end
