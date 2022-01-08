@@ -65,8 +65,8 @@ class MeetingsController < ApplicationController
       client = get_google_calendar_client(@host)
       event = get_event(@meeting)
       client.insert_event('primary', event, send_updates: "all", conference_data_version: "1")
-      meet_link = client.get_event('primary', MeetingUser.where(meeting: meeting, host: true).first.id).hangout_link
-      raise
+      meet_link = client.get_event('primary', "caffiend#{MeetingUser.where(meeting: @meeting, host: true).first.id}").hangout_link
+      @meeting.update(meeting_link: meet_link)
     end
 
     redirect_to meeting_confirmation_meeting_path(@meeting)
@@ -151,7 +151,7 @@ class MeetingsController < ApplicationController
       summary: 'CAFFIEND SESSION',
       location: meeting.location,
       description: meeting.location,
-      id: MeetingUser.where(meeting: meeting, host: true).first.id,
+      id: "caffiend#{MeetingUser.where(meeting: meeting, host: true).first.id}",
       start: {
         date_time: meeting.start_datetime.iso8601, #Time.new(meeting.start_datetime).to_datetime.rfc3339,
         time_zone: "Asia/Singapore"
