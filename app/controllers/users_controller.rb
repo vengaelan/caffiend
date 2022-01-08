@@ -1,6 +1,29 @@
 class UsersController < ApplicationController
   # SHOW => GET /users/:id (Dashboard)
+  before_action :set_user, only: %i[show edit update]
+
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    @user.update(user_params)
+
+    # respond_to do |format|
+    #   format.html { redirect_to users_path }
+    #   format.text { render partial: 'users/user_infos', locals: { user: @user }, formats: [:html] }
+    # end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:about, :description)
+  end
+
+  def set_user
     @user = User.find(params[:id])
   end
 end
