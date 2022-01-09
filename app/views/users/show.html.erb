@@ -10,10 +10,10 @@
       <div class="card-title">
         <%= image_tag (current_user.image ? current_user.image : "default-user.png"), class: "profile-img" %>
         <h4><strong> <%= @user.first_name %> <%= @user.last_name %> </strong></h4>
+        <i class="fas fa-mug-hot fa-2x mb-2" data-edit-user-target="icon" data-action="click->edit-user#displayForm"></i>
       </div>
       <div class="user-info-card" data-edit-user-target="info">
-        <i class="fas fa-pen fa-xs ml-2" data-edit-user-target="icon" data-action="click->edit-user#displayForm"></i> 
-        <h5>About</h5>
+        <h5>About</h5> 
         <p><%= @user.about =%></p>
         <br>
         <h5>Description</h5>
