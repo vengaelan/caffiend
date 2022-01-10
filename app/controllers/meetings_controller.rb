@@ -53,31 +53,37 @@ class MeetingsController < ApplicationController
   def update
     @meeting = Meeting.find(params[:id])
     @host = MeetingUser.where(meeting: @meeting, host: true).first.user
+    # if meeting_params[:invitee_email] == ""
+    #   redirect_to root
+    # end
     @meeting.update(meeting_params.except(:invitee_email))
     @meeting.invitee_email << meeting_params[:invitee_email]
-    @meeting.save!
-    @meeting.update(status: "ACCEPTED")
-    if User.find_by_email(@meeting.invitee_email.last)
-      add_meeting_to_existing_user(@meeting.invitee_email.last, @meeting)
+    if @meeting.save
+      @meeting.update(status: "ACCEPTED")
+      if User.find_by_email(@meeting.invitee_email.last)
+        add_meeting_to_existing_user(@meeting.invitee_email.last, @meeting)
+      else
+        add_meeting_to_non_user(@meeting.invitee_email.last, @meeting)
+      end
+
+      client = get_google_calendar_client(@host)
+      event_id = "caffiend#{MeetingUser.where(meeting: @meeting, host: true).first.id}"
+
+      if @meeting.meeting_link
+        event = client.get_event('primary', event_id)
+        event.attendees << { email: @meeting.invitee_email.last }
+        client.update_event('primary', event.id, event, send_updates: "all")
+      else
+        event = get_event(@meeting)
+        client.insert_event('primary', event, send_updates: "all", conference_data_version: "1")
+        meet_link = client.get_event('primary', event_id).hangout_link
+        @meeting.update(meeting_link: meet_link)
+      end
+
+      redirect_to meeting_confirmation_meeting_path(@meeting)
     else
-      add_meeting_to_non_user(@meeting.invitee_email.last, @meeting)
+      render "send_invite"
     end
-
-    client = get_google_calendar_client(@host)
-    event_id = "caffiend#{MeetingUser.where(meeting: @meeting, host: true).first.id}"
-
-    if @meeting.meeting_link
-      event = client.get_event('primary', event_id)
-      event.attendees << { email: @meeting.invitee_email.last }
-      client.update_event('primary', event.id, event, send_updates: "all")
-    else
-      event = get_event(@meeting)
-      client.insert_event('primary', event, send_updates: "all", conference_data_version: "1")
-      meet_link = client.get_event('primary', event_id).hangout_link
-      @meeting.update(meeting_link: meet_link)
-    end
-
-    redirect_to meeting_confirmation_meeting_path(@meeting)
   end
 
   # SHOW => GET /meetings/:id (As a user, I can generate a meeting invite link/ view meeting)
