@@ -53,7 +53,7 @@ class MeetingsController < ApplicationController
   def update
     @meeting = Meeting.find(params[:id])
     @host = MeetingUser.where(meeting: @meeting, host: true).first.user
-
+    @meeting.update(meeting_params.except(:invitee_email))
     @meeting.invitee_email << meeting_params[:invitee_email]
     @meeting.save!
     @meeting.update(status: "ACCEPTED")
