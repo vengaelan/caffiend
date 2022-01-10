@@ -1,5 +1,6 @@
 require "google/apis/calendar_v3"
-require "google/api_client/client_secrets.rb"
+require "google/api_client/client_secrets"
+require "securerandom"
 
 class MeetingsController < ApplicationController
   CALENDAR_ID = 'primary'
@@ -29,7 +30,7 @@ class MeetingsController < ApplicationController
     # @meeting.start_datetime = params[:date] + " " + params[:start_time]
     # @meeting.end_datetime = params[:date] + " " + params[:end_time]
 
-    @meeting.user = current_user
+    # @meeting.user = current_user
 
     # Removed named parameters, choices' attributes can be instatinated on line 17.
     # loop through choices hash and create new choice
@@ -38,9 +39,12 @@ class MeetingsController < ApplicationController
     # end
 
     @meeting.save!
+    @meeting_user = MeetingUser.new()
+    @meeting_user.user = current_user
+    @meeting_user.meeting = @meeting
+    @meeting_user.host = true
+    @meeting_user.save!
 
-    # event = get_event(@meeting)
-    # client.insert_event('primary', event, send_updates: "all")
     flash[:notice] = 'You successfully created a new meeting!'
 
     redirect_to copy_invite_meeting_path(@meeting)
@@ -48,18 +52,32 @@ class MeetingsController < ApplicationController
 
   def update
     @meeting = Meeting.find(params[:id])
-
-    if !@meeting.invitee_email
-      @meeting.update(meeting_params)
-      @meeting.update(status: "ACCEPTED")
-      #@meeting.update(invitee_email: meeting_params[:invitee_email], status: "ACCEPTED")
-
-      client = get_google_calendar_client(@meeting.user)
-      event = get_event(@meeting)
-      client.insert_event('primary', event, send_updates: "all")
+    @host = MeetingUser.where(meeting: @meeting, host: true).first.user
+    @meeting.update(meeting_params.except(:invitee_email))
+    @meeting.invitee_email << meeting_params[:invitee_email]
+    @meeting.save!
+    @meeting.update(status: "ACCEPTED")
+    if User.find_by_email(@meeting.invitee_email.last)
+      add_meeting_to_existing_user(@meeting.invitee_email.last, @meeting)
+    else
+      add_meeting_to_non_user(@meeting.invitee_email.last, @meeting)
     end
 
-    redirect_to  meeting_confirmation_meeting_path(@meeting)
+    client = get_google_calendar_client(@host)
+    event_id = "caffiend#{MeetingUser.where(meeting: @meeting, host: true).first.id}"
+
+    if @meeting.meeting_link
+      event = client.get_event('primary', event_id)
+      event.attendees << { email: @meeting.invitee_email.last }
+      client.update_event('primary', event.id, event, send_updates: "all")
+    else
+      event = get_event(@meeting)
+      client.insert_event('primary', event, send_updates: "all", conference_data_version: "1")
+      meet_link = client.get_event('primary', event_id).hangout_link
+      @meeting.update(meeting_link: meet_link)
+    end
+
+    redirect_to meeting_confirmation_meeting_path(@meeting)
   end
 
   # SHOW => GET /meetings/:id (As a user, I can generate a meeting invite link/ view meeting)
@@ -72,12 +90,12 @@ class MeetingsController < ApplicationController
   # UPCOMING => GET /users/:id (As a user, I can view my upcoming meetings)
   def upcoming
     start_date = params.fetch(:start_date, Date.today).to_date
-    @upcoming_meetings = Meeting.where(start_datetime: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week, status: ["ACCEPTED", "PENDING"])
+    @upcoming_meetings = current_user.meetings.where(start_datetime: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week, status: ["ACCEPTED", "PENDING"])
   end
 
   # PAST => GET /users/:id (As a user, I can view my past meetings)
   def past
-    past_meetings = Meeting.where(status: "COMPLETED")
+    past_meetings = current_user.meetings.where(status: "COMPLETED")
   end
 
 
@@ -136,27 +154,27 @@ class MeetingsController < ApplicationController
 
   # Google API Get Event Method
   def get_event meeting
-    attendees = [{ email: meeting.invitee_email }] # task[:members].split(',').map{ |t| {email: t.strip} }
+    attendees = [{ email: meeting.invitee_email.last }] # task[:members].split(',').map{ |t| {email: t.strip} }
     event = Google::Apis::CalendarV3::Event.new({
       summary: 'CAFFIEND SESSION',
       location: meeting.location,
       description: meeting.location,
+      id: "caffiend#{MeetingUser.where(meeting: meeting, host: true).first.id}",
+      color_id: '3',
       start: {
-        date_time: meeting.start_datetime.iso8601, #Time.new(meeting.start_datetime).to_datetime.rfc3339,
+        date_time: meeting.start_datetime.iso8601,
         time_zone: "Asia/Singapore"
-        # date_time: '2019-09-07T09:00:00-07:00',
-        # time_zone: 'Asia/Kolkata',
       },
       end: {
-        date_time: meeting.end_datetime.iso8601, #Time.new(meeting.end_datetime).to_datetime.rfc3339,
+        date_time: meeting.end_datetime.iso8601,
         time_zone: "Asia/Singapore"
       },
       attendees: attendees,
       reminders: {
         use_default: false,
         overrides: [
-          Google::Apis::CalendarV3::EventReminder.new(reminder_method:"popup", minutes: 10),
-          Google::Apis::CalendarV3::EventReminder.new(reminder_method:"email", minutes: 20)
+          Google::Apis::CalendarV3::EventReminder.new(reminder_method: "popup", minutes: 10),
+          Google::Apis::CalendarV3::EventReminder.new(reminder_method: "email", minutes: 20)
         ]
       },
       notification_settings: {
@@ -168,6 +186,33 @@ class MeetingsController < ApplicationController
                        ]
       }, 'primary': true
     })
+
+    if meeting.meeting_link
+      event.hangout_link = meeting.meeting_link
+    else
+      event.conference_data = {
+        create_request: {
+          conference_solution_key: {
+            type: 'hangoutsMeet'
+          }, request_id: SecureRandom.uuid
+        }
+      }
+    end
+    event
+  end
+
+  def add_meeting_to_existing_user(email, meeting)
+    @meeting_user = MeetingUser.new
+    @meeting_user.meeting = meeting
+    @meeting_user.user = User.find_by_email(email)
+    @meeting_user.save!
+  end
+
+  def add_meeting_to_non_user(email, meeting)
+    @non_meeting_user = MeetingNonUser.new
+    @non_meeting_user.meeting = meeting
+    @non_meeting_user.non_user_email = email
+    @non_meeting_user.save!
   end
 
 end

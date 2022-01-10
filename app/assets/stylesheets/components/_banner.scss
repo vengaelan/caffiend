@@ -1,15 +1,37 @@
 .home-banner {
-  // Banner image to be updated
-  background-image: url(https://images.unsplash.com/photo-1620202431267-bfd880f19cec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1567&q=80);
-  background-size: cover;
+  // background-image: url(https://images.unsplash.com/photo-1620202431267-bfd880f19cec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1567&q=80);
+  // background-size: cover;
+  // height: 100vh;
+  // color: #eee;
+  // text-align: left;
+  // padding-top: 40vh;
+
+  width: 100%;
   height: 100vh;
-  color: #eee;
+  display: flex;
+  padding: 50px;
   text-align: left;
-  padding-top: 40vh;
+  align-items: center;
+  justify-content: left;
+  background-size: 300% 300%;
+  background-image: linear-gradient(
+        -45deg,
+        rgba(59,173,227,1) 0%,
+        rgba(87,111,230,1) 25%,
+        rgba(152,68,183,1) 51%,
+        rgba(255,53,127,1) 100%
+  );
+  animation: AnimateBG 20s ease infinite;
+}
+
+@keyframes AnimateBG {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
 .banner-text {
-  width: 600px;
+  width: 500px;
   margin-left: 100px;
   color: #F6F9FC;
   opacity: 0.8;
@@ -29,6 +51,30 @@
   font-size: 16px;
   font-family: 'Open-sans', sans-serif;
   font-weight: lighter;
+}
+
+@media(max-width: 425px) {
+  .home-banner .banner-text {
+    margin-left: 30px;
+  }
+  .home-banner .banner-text h1 {
+    font-size: 40px;
+  }
+  .home-banner .banner-text p {
+  font-size: 10px;
+}
+}
+
+@media(max-width: 320px) {
+  .home-banner .banner-text {
+    margin-left: 20px;
+  }
+  .home-banner .banner-text h1 {
+    font-size: 32px;
+  }
+  .home-banner .banner-text p {
+  font-size: 10px;
+}
 }
 
 .text-highlight {
