@@ -15,7 +15,8 @@
             <%# Content for tooltip to be added below, default display: none %>
             <div data-tooltip-target="info">
               <p>Tooltip Test</p>
-              <%= upcoming_meeting.location %></div>
+              <%= upcoming_meeting.location %><br>
+              <a href="<%= upcoming_meeting.meeting_link %>">Google Meet Link</a>
             </div>
           </div>
         <% end %>

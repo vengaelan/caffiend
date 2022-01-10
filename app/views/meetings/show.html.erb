@@ -7,8 +7,8 @@
     <h5>End Time: <%= @meeting.end_datetime.strftime("%H:%M") %></h5>
     <h5>Location: <%= @meeting.location %></h5>
     <h5>Status: <%= @meeting.status %></h5>
+    <h5>links: <a href="<%= @meeting.meeting_link %>">Google Meet Link</a></h5>
 
-    <h5>links:</h5>
     <%= link_to 'Send Invite', send_invite_meeting_path, class: "text-decoration-none" %>
     <%= link_to "Back to Dashboard", user_path(current_user), class: "text-decoration-none"  %>
   </div>
