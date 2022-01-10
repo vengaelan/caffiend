@@ -6,31 +6,25 @@
   <div class="row justify-content-center">
     <%# ----- User Profile ----- %>
 
-    <div class="dashboard-card col-12 col-md-6 col-lg-3">
+    <div class="dashboard-card col-12 col-md-6 col-lg-3" data-controller="edit-user">
       <div class="card-title">
         <%= image_tag (current_user.image ? current_user.image : "default-user.png"), class: "profile-img" %>
         <h4><strong> <%= @user.first_name %> <%= @user.last_name %> </strong></h4>
-
-          <div class="user-infos">
-          <!-- <div class="user-infos" data-controller="edit-info" data-edit-info-target="infos"> -->
-            <i class="fas fa-pen fa-xs ml-2" data-action="click->edit-info#displayForm"></i>
-            <h4>About</h4>
-            <p><%= @user.about =%></p>
-            <br>
-            <h4>Description</h4>
-            <p> <%= @user.description %></p>
-          </div>
-
-      <%#= simple_form_for @user, html: { class: user.errors.any? ? '' : 'd-none', data: { edit_info_target: 'form', action: 'submit->edit-user#update' } } do |f| %>
-        <div class="user-edit">
-          <%= simple_form_for @user do |f| %>
-          <%= f.input :about %>
-          <%= f.input :description %>
-          <br>
-          <%= f.submit %>
-          <% end %>
-        </div>
+        <i class="fas fa-mug-hot fa-2x mb-2" data-edit-user-target="icon" data-action="click->edit-user#displayForm"></i>
       </div>
+      <div class="user-info-card" data-edit-user-target="info">
+        <h5>About</h5> 
+        <p><%= @user.about =%></p>
+        <br>
+        <h5>Description</h5>
+        <p> <%= @user.description %></p>
+      </div>
+
+      <%= simple_form_for @user, html: { class: 'd-none', data: { edit_user_target: 'form', action: 'submit->edit-user#update' } } do |f| %>
+        <%= f.input :about %>
+        <%= f.input :description %>
+        <%= f.submit %>
+      <% end %>  
     </div>
 
     <%# ----- Schedule Coffee Chat ----- %>
