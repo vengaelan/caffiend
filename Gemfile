@@ -40,6 +40,10 @@ gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
 gem "google-api-client", require: "google/apis/calendar_v3"
 
+# Cloudinary - Allow users to upload their own user image
+gem 'cloudinary', '~> 1.16.0'
+gem 'dotenv-rails', groups: [:development, :test]
+
 # -------- CAFFIEND: END OF OUR GEMS -------
 
 gem 'autoprefixer-rails', '10.2.5'
