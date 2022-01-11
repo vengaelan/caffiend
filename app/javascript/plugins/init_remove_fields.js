@@ -10,6 +10,9 @@ const init_remove_fields = () => {
     // show the nearest "Add Choice" button
     $(this).parent().next('.add_fields').show()
 
+    // add background color of unadded field
+    $(this).parent().next('.add_fields').parent().addClass("unadded")
+
     return event.preventDefault();
   });
 }
