@@ -3,47 +3,83 @@
 .simple-calendar {
   table {
     min-height: 80vh;
-    box-shadow: 2px 2px 8px #14213D;
+    margin-bottom: 0;
+    border: 0;
   }
+  thead {
+    background-color: lavender;
+    color: rgb(118, 118, 248);
+
+    tr {
+      height: 45px;
+    }
+    th {
+      vertical-align: middle;
+      text-align: center;
+      border-left: 0;
+      border-right: 0;
+    }
+  }
+  .prev-month {
+    background-color: white;
+    color: lightgrey;
+  }
+
+  .current-month {
+    background-color: white;
+    color: rgb(118, 118, 248);
+  }
+
+  .next-month {
+    background-color: white;
+    color: lightgrey;
+  }
+
   .td {
     width: 80px;
+    overflow: hidden;
   }
   .today {
-    background-color: #FAF3DD;
+    background-color: lavender;
   }
 }
 
+
 .meeting {
-  color: white;
+  background-color: lavender;
+  color: rgb(118, 118, 248);
   padding: 8px 24px;
   border-radius: 4px;
-  background: #691FFF;
+  height: 30%;
   transition: background 0.3s ease;
-
+  overflow: hidden;
   a {
-    color: white;
+    color: rgb(118, 118, 248);
   }
 }
 
 .meeting:hover {
-  background: #5a18df;
-  color: white;
+  color: lavender;
+  background-color: rgb(118, 118, 248);
+  a {
+    color: lavender;
+  }
 }
 
 .meeting.pending {
-  color: white;
-  width: auto;
-  padding: 8px 8px;
-  border-radius: 4px;
-  background: #1FDAFF;
-  transition: background 0.3s ease;
-  opacity: 0.8;
+  background-color: rgb(205, 245, 245);
+  color: rgb(77, 204, 247);
+  a {
+    color: rgb(77, 204, 247);
+  }
 }
 
 .meeting.pending:hover {
-  background: #1FDAFF;
-  opacity: 1;
-  color: white;
+  background-color: rgb(77, 204, 247);
+  color: rgb(205, 245, 245);
+  a {
+    color: rgb(205, 245, 245);
+  }
 }
 
 @media(max-width: 320px) {
@@ -65,4 +101,9 @@
   .calendar-style .btn-secondary {
   font-size: 8px;
 }
+}
+
+.calcontain {
+  border-radius: 20px;
+  overflow: hidden;
 }
