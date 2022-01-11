@@ -16,7 +16,7 @@
         </div>
 
       <% else %>
-        <div class="container">
+        <div class="container mb-4">
           <% @meeting.choices.each do |c| %>
             <%= render "choice_selection", choice: c %>
           <% end %>
@@ -29,11 +29,11 @@
       <%end %>
 
       <%# Input email & Confirmation %>
-      <%= f.input :invitee_email, as: :string, label: 'Your email', placeholder: "input your email address", class: 'form-control' %>
+      <%= f.input :invitee_email, as: :string, label: 'Your email: ', placeholder: "Input email address", class: 'form-control' %>
 
       <br>
 
-      <center><%= f.button :submit, "Confirm meeting with #{@meeting.users.first.first_name}", class: "caffiend-btn", disabled: @meeting.choices.length > 1 %></center>
+      <center><%= f.button :submit, "Confirm Meeting", class: "caffiend-btn", disabled: @meeting.choices.length > 1 %></center>
     <% end %>
   </div>
 </div>

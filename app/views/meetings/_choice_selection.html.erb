@@ -1,17 +1,27 @@
-<div class="d-flex flex-column border border-primary m-3 choice"
+<div class="d-flex flex-row m-3 choice"
 data-action="click->choice#selection"
 data-choice-start-param="<%= choice.start_datetime %>"
 data-choice-end-param="<%= choice.end_datetime %>"
 data-choice-location-param="<%= choice.location %>"
 >
   <%# TODO: Content of choice to be updated as per design  %>
-  <div>
-    <%= choice.start_datetime %>
+  <div class="d-flex flex-column justify-content-center m-4 month">
+    <div>
+      <p class="p-0 m-0 text-secondary">
+        <%= choice.start_datetime.strftime("%b") %>
+      </p>
+    </div>
+    <div class="dayint">
+      <%= choice.start_datetime.day %>
+    </div>
   </div>
-  <div>
-    <%= choice.end_datetime %>
-  </div>
-  <div>
-    <%= choice.location %>
+  <div class="ml-1 p-2 d-flex flex-column  justify-content-center details ">
+    <h5 class="p-0 m-0 mb-1">
+      <%= choice.start_datetime.strftime("%A") %>
+    </h5>
+    <p class="m-0 p-0 text-secondary">
+      <%= choice.location %></br>
+      <%= "#{choice.start_datetime.strftime('%I:%M')} - #{choice.end_datetime.strftime('%I:%M %p')}" %>
+    </p>
   </div>
 </div>
