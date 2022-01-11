@@ -1,7 +1,28 @@
 .choice {
-  background-color: lightblue;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background-color: white;
+  padding: 10px;
+  box-shadow: 4px 4px 6px lightgray;
 }
 
 .choice.selected {
-  background-color: blue;
+  background-color: lavender;
+}
+
+.dayint {
+  font-weight: bold;
+  font-size: 20px;
+  color: rgb(118, 118, 248);
+}
+
+.month {
+  padding-right: 35px;
+  border-right: 1px solid #dddd;
+}
+
+.details {
+  h5 {
+    color: rgb(118, 118, 248);
+  }
 }
