@@ -37,7 +37,7 @@
 }
 
 .footer-clean .item.social {
-  text-align:right;
+  text-align: center;
 }
 
 @media (max-width:767px) {
@@ -59,7 +59,7 @@
   height:40px;
   line-height:40px;
   display:inline-block;
-  text-align:center;
+  text-align: center;
   border-radius:50%;
   border:1px solid #ccc;
   margin-left:10px;
@@ -90,4 +90,5 @@
   font-size:13px;
   opacity:0.6;
   font-family: 'Open-sans', sans-serif;
+  text-align: center;
 }
