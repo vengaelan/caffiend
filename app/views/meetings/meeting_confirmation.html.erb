@@ -2,11 +2,11 @@
   <div class="confirmation-box p-4">
     <div class="d-flex flex-column justify-content-center confirmation date">
       <div>
-        <p class="p-0 m-0 text-secondary text-center">
+        <p class="p-0 m-0 text-secondary  text-center">
           <%= @meeting.start_datetime.strftime("%b") %>
         </p>
       </div>
-      <div class="text-center confirmation dayint">
+      <div class="text-center confirmation dayint large">
         <%= @meeting.start_datetime.day %>
       </div>
     </div>
