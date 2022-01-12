@@ -35,14 +35,19 @@
     color: lightgrey;
   }
 
-  .td {
-    width: 80px;
+  td {
     overflow: hidden;
   }
   .today {
-    background-color: lavender;
+    background-color: floralwhite;
+  }
+
+  .day {
+  overflow: hidden;
+  height: 100px;
   }
 }
+
 
 
 .meeting {
@@ -50,7 +55,8 @@
   color: rgb(118, 118, 248);
   padding: 8px 24px;
   border-radius: 4px;
-  height: 30%;
+  border: 1px solid #dddd;
+  height: 30px;
   transition: background 0.3s ease;
   overflow: hidden;
   a {
