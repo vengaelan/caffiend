@@ -6,8 +6,9 @@
 }
 
 .calendar-style .btn-secondary {
-  background-color: #5a18df;
-  color: white;
+  color: lavender;
+  background-color: rgb(118, 118, 248);
+  border: 1px solid white;
   font-family: 'Open Sans', sans-serif;
   border-radius: 8px;
 }
@@ -18,4 +19,10 @@
 
 .caffiend-btn:hover {
   color: #5a18df;
+}
+
+.caffiend-btn.next {
+  background-color: white;
+  color: rgb(118, 118, 248);
+  border: 1px solid #dddd;
 }

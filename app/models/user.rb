@@ -8,6 +8,7 @@ class User < ApplicationRecord
   # References
   has_many :meeting_users, dependent: :destroy
   has_many :meetings, through: :meeting_users
+  has_one_attached :photo
 
   # Validations
   validates :first_name, :last_name, presence: true

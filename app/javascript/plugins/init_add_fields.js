@@ -18,6 +18,9 @@ const init_add_fields = () => {
     // Hide button after click
     $(this).hide();
 
+    // Remove background color of unadded field
+    $(this).parent().removeClass("unadded")
+
     // Flatpickr plugin needs to run again to capture new fields
     return initFlatpickr();
   });
