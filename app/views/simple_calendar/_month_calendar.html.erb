@@ -7,7 +7,7 @@
       <span class="calendar-title btn btn-secondary px-4 mx-2"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
       <%= link_to t('simple_calendar.next', default: '▶'), calendar.url_for_next_view, class: 'btn caffiend-btn next' %>
     </div>
-    <%= link_to 'Create meeting', new_meeting_path, class: 'calendar-title btn btn-secondary px-4 mx-2' %>
+    <%= link_to '<i class="far fa-calendar-plus mr-2"></i>New Meeting'.html_safe, new_meeting_path, class: 'calendar-title btn btn-secondary px-4 mx-2' %>
   </div>
   <div class="calcontain">
     <table class="table">
