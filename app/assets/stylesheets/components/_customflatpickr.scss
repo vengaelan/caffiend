@@ -1,0 +1,126 @@
+// Weekdays
+.flatpickr-weekdays {
+  background: lavender;
+}
+
+span.flatpickr-weekday {
+ color: #7676f8;
+ background: lavender;
+}
+
+// Months
+.flatpickr-current-month {
+  background: lavender;
+}
+
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+  color: #7676f8;
+  background: lavender;
+}
+
+.flatpickr-current-month .flatpickr-monthDropdown-months .flatpickr-monthDropdown-month {
+  color: #7676f8;
+  background: lavender;
+}
+
+.flatpickr-months .flatpickr-month {
+  color: #7676f8;
+  fill: #7676f8;
+  background: lavender;
+}
+
+.flatpickr-months .flatpickr-prev-month.flatpickr-prev-month {
+  color: #7676f8;
+  background: lavender;
+}
+
+.flatpickr-months .flatpickr-prev-month svg:hover {
+  color: #5318ca;
+  fill: #5318ca
+}
+
+.flatpickr-months .flatpickr-prev-month {
+  color: #7676f8;
+  fill: #7676f8;
+  background: lavender;
+}
+
+.flatpickr-months .flatpickr-prev-month.flatpickr-next-month {
+  color: #7676f8;
+  background: lavender;
+}
+
+.flatpickr-months .flatpickr-next-month svg:hover {
+  color: #5318ca;
+  fill: #5318ca
+}
+
+.flatpickr-months .flatpickr-next-month {
+  color: #7676f8;
+  fill: #7676f8;
+  background: lavender;
+}
+
+// Years
+.flatpickr-current-month input.cur-year {
+   color: #7676f8;
+   background: lavender;
+}
+
+// Calenderdays
+.flatpickr-day {
+  color: #7676f8;
+}
+
+
+// Today
+.flatpickr-day.today {
+    border-color: lavender;
+}
+
+.flatpickr-day.today:hover {
+  background: lavender;
+  border-color: lavender;
+}
+
+// Unselected dates
+.flatpickr-day:hover {
+  background: lavender;
+  border-color: lavender;
+}
+
+// Selected dates
+.flatpickr-day.selected {
+  background: #691fff;
+  border-color: #691fff;
+}
+
+.flatpickr-day.selected:hover {
+  background: #5318ca;
+  border-color: #5318ca;
+}
+
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+  font-family: "Open-sans", sans-serif;
+}
+
+//  Time
+.flatpickr-time input {
+  color: #7676f8;
+}
+
+.flatpickr-time input:hover {
+  background: lavender;
+}
+
+.flatpickr-time .flatpickr-am-pm {
+  color: #7676f8;
+}
+
+.flatpickr-time .flatpickr-am-pm:hover {
+  background: lavender;
+}
+
+.flatpickr-time .flatpickr-time-separator {
+  color: #7676f8;
+}
