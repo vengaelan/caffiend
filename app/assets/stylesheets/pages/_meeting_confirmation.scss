@@ -54,3 +54,12 @@ $dark-purp: rgb(118, 118, 248);
   text-align: center;
   color: lavender;
 }
+
+.thankyou i {
+  animation: color-change 3s 1 normal forwards;
+}
+
+@keyframes color-change {
+  0% { color: white }
+  100% { color: rgb(177, 247, 177) }
+}
