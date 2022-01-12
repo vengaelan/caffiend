@@ -7,6 +7,10 @@
   transition: 0.3s ease;
 }
 
+.choice:hover {
+  cursor: pointer;
+}
+
 .choice.selected {
   background-color: lavender;
 }
