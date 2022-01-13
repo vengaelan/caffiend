@@ -31,82 +31,74 @@
         <%= f.submit %>
       <% end %>
     </div>
+      
+    <%# ----- Schedule Card ----- %>
 
-    <%# ----- Schedule Coffee Chat ----- %>
-
-    <div class="dashboard-card col-12 col-md-6 col-lg-3">
-      <div class="card-title">
-        <h4><strong> Schedule Coffee Chat </strong></h4>
-      </div>
-      <div class="info-card">
-        <i class="fas fa-calendar"></i>
+    <div class="tab-card">
+      <div class="d-flex flex-row-reverse mr-2">
         <%= link_to "Create New Meeting", new_meeting_path, class: "btn" %>
       </div>
-      <div class="info-card">
-        <i class="fas fa-redo-alt"></i>
-        <p> Reschedule </p> <%# placeholder for reschedule link %>
-      </div>
-    </div>
+      <div class="schedule-card d-flex">
+        <div class="upcoming-card justify-content-center">
+          <div class="card-title">
+            <h4><strong> Upcoming Schedule </strong></h4>
+          </div>
+          <div class= "info-card">
+            <%= image_tag "https://avatars.githubusercontent.com/u/88544880?v=4", class: "small-img-circle" %> <%# placeholder user's dp %>
+            <div>
+              <h5> Kopi Soh </h5>
+              <p> in 1 Day(s) </p>
+            </div>
+          </div>
+          <div class= "info-card">
+            <%= image_tag "https://avatars.githubusercontent.com/u/86636163?v=4", class: "small-img-circle" %> <%# placeholder user's dp %>
+            <div>
+              <h5> Tiger Uncle </h5>
+              <p> in 3 Day(s) </p>
+            </div>
+          </div>
+          <div class= "info-card">
+            <%= image_tag "https://avatars.githubusercontent.com/u/82791093?v=4", class: "small-img-circle" %> <%# placeholder user's dp %>
+            <div>
+              <h5> Milo Boy </h5>
+              <p> in 5 Day(s) </p>
+            </div>
+          </div>
+          <%= link_to "View Calendar", upcoming_meetings_path, class: "btn btn-block", style: "border-radius:25px" %>
+          <br>
+        </div>
 
-    <%# ----- Upcoming Schedule ----- %>
+        <%# ----- Engagements ----- %>
 
-    <div class="dashboard-card col-12 col-md-6 col-lg-3">
-      <div class="card-title">
-        <h4><strong> Upcoming Schedule </strong></h4>
-      </div>
-      <div class= "info-card">
-        <%= image_tag "https://avatars.githubusercontent.com/u/88544880?v=4", class: "small-img-circle" %> <%# placeholder user's dp %>
-        <div>
-          <h5> Kopi Soh </h5>
-          <p> in 1 Day(s) </p>
-        </div>
-      </div>
-      <div class= "info-card">
-        <%= image_tag "https://avatars.githubusercontent.com/u/86636163?v=4", class: "small-img-circle" %> <%# placeholder user's dp %>
-        <div>
-          <h5> Tiger Uncle </h5>
-          <p> in 3 Day(s) </p>
-        </div>
-      </div>
-      <div class= "info-card">
-        <%= image_tag "https://avatars.githubusercontent.com/u/82791093?v=4", class: "small-img-circle" %> <%# placeholder user's dp %>
-        <div>
-          <h5> Milo Boy </h5>
-          <p> in 5 Day(s) </p>
-        </div>
-      </div>
-      <%= link_to "View Upcoming Meetings", upcoming_meetings_path, class: "btn btn-block" %>
-    </div>
-
-    <%# ----- Engagements ----- %>
-
-    <div class="dashboard-card col-12 col-md-6 col-lg-3">
-      <div class="card-title">
-        <h4><strong> Engagements </strong></h4>
-      </div>
-      <div class ="info-card d-flex justify-content-between">
-        <div class="engagement-num">
-          <h1><strong> 7 </strong></h1>
-        </div>
-        <div class="engagement-details">
-          <p> New Connections Made </p>
-        </div>
-      </div>
-      <div class ="info-card d-flex justify-content-between">
-        <div class="engagement-num">
-          <h1><strong> 3 </strong></h1>
-        </div>
-        <div class="engagement-details">
-          <p> Completed Coffee Chats </p>
-        </div>
-      </div>
-      <div class ="info-card d-flex justify-content-between">
-        <div class="engagement-num">
-          <h1><strong> 3 </strong></h1>
-        </div>
-        <div class="engagement-details">
-          <p> Recurring Chats </p>
-        </div>
+        <div class="engagement-card justify-content-center">
+          <div class="card-title">
+            <h4><strong> Engagements </strong></h4>
+          </div>
+          <div class ="info-card d-flex justify-content-between">
+            <div class="engagement-num">
+              <h1><strong> 7 </strong></h1>
+            </div>
+            <div class="engagement-details">
+              <p> New Connections Made </p>
+            </div>
+          </div>
+          <div class ="info-card d-flex justify-content-between">
+            <div class="engagement-num">
+              <h1><strong> 3 </strong></h1>
+            </div>
+            <div class="engagement-details">
+              <p> Completed Coffee Chats </p>
+            </div>
+          </div>
+          <div class ="info-card d-flex justify-content-between">
+            <div class="engagement-num">
+              <h1><strong> 3 </strong></h1>
+            </div>
+            <div class="engagement-details">
+              <p> Recurring Chats </p>
+            </div>
+          </div>
+        </div>  
       </div>
     </div>
   </div>

@@ -6,17 +6,39 @@
 .dashboard-card {
   background-color: white;
   margin: 15px;
-  border: 1px solid black;
+  border: 1px solid #ddd;
   border-radius: 10px;
-  min-height: 700px;
+  max-height: 600px;
   max-width: 300px;
-  box-shadow: 2px 2px 8px #14213D;
+  box-shadow: 4px 4px 6px lightgrey;
+}
+
+.tab-card {
+  margin-top: 15px;
+  max-height: 600px;
+}
+
+.schedule-card {
+  background-color: white;
+  margin: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  max-width: 700px;
+  box-shadow: 4px 4px 6px lightgrey;
+}
+
+.upcoming-card, .engagement-card {
+  width: 300px;
+}
+
+.engagement-card {
+  border-left: 1px solid lightgrey;
 }
 
 .card-title {
   justify-content: center;
   margin: 15px auto;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid lightgrey;
   text-align: center;
 }
 
