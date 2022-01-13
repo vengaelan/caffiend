@@ -44,8 +44,10 @@
         </div>
       </div>
       <%# Div for button %>
-      <div>
-        <%= f.button :submit, "Create Meeting", class: "btn btn-gradient btn-rounded" %>
+      <div class="d-flex flex-row justify-content-center">
+        <%= button_tag type: "submit", class: "px-4 btn btn-meeting large btn-rounded btn-gradient" do %>
+          <i class="far fa-calendar-plus mr-3"></i>New Meeting
+        <% end %>
       </div>
     <% end %>
   </div>
