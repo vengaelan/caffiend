@@ -5,7 +5,7 @@
     <%= simple_form_for @meeting do |f| %>
 
       <%# Original instance which sends google calender invite %>
-      <h2>Create a new meeting:</h2>
+      <h2 class="mb-5">Create a new meeting</h2>
 
       <%# <div class="col-3 my-3"> %>
         <%# f.input :start_datetime, as: :string, label: "Start Date Time", class: "form-control", input_html: {class: "datetimepicker"} %>
@@ -15,7 +15,7 @@
 
       <%# Choices nested form %>
 
-      <div class="row  mb-3">
+      <div class="row  mb-5">
 
 
         <%= f.simple_fields_for :choices do |f| %>
