@@ -51,8 +51,7 @@ class User < ApplicationRecord
   # For dashboard "New Connections Made, add .length after method"
   def self.connections(user)
     connections = {}
-    meetings = user.meetings
-    meetings.each do |meeting|
+    user.meetings.each do |meeting|
       meeting.invitee_email.each do |email|
         connections.include?(email) ? connections[email] += 1 : connections[email] = 1
       end
