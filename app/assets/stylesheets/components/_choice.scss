@@ -50,20 +50,22 @@ color: rgb(178, 178, 252);
 // To place object on the top right
 .top-right {
   position: absolute;
-  top: 8px;
-  right: 20px;
+  top: 0px;
+  right: 33px;
 }
 
 // For unadded choice fields
 .choice.unadded {
   background-color: rgb(223, 223, 241);
   font-size: 20px;
+  height: 100%
 }
 
 // For links in choice
 .choice a {
     color: rgb(118, 118, 248);
     text-decoration: none;
+    font-size: 30px;
 }
 
 .choice a:hover {
