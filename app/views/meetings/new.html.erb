@@ -15,33 +15,40 @@
 
       <%# Choices nested form %>
 
-      <div class="d-flex flex-row justify-content-around mb-3">
+      <div class="row  mb-3">
+
+
         <%= f.simple_fields_for :choices do |f| %>
-          <div class="fields purple col-3 m-3 p-3 choice">
-            <%= f.input :start_datetime, as: :string, label: "Start Date Time", class: "form-control", input_html: {class: "datetimepicker"} %>
-            <%= f.input :end_datetime, as: :string, label: "End Date Time", class: "form-control", input_html: {class: "datetimepicker"} %>
-            <%= f.input :location, as: :text, label: 'Location:', placeholder:"eg. 11B Baker street", class: "form-control" %>
+          <div class="col-4">
+            <div class="fields purple p-3 choice">
+              <%= f.input :start_datetime, as: :string, label: "Start Date Time", class: "form-control", input_html: {class: "datetimepicker"} %>
+              <%= f.input :end_datetime, as: :string, label: "End Date Time", class: "form-control", input_html: {class: "datetimepicker"} %>
+              <%= f.input :location, as: :text, label: 'Location:', placeholder:"eg. 11B Baker street", class: "form-control" %>
+            </div>
           </div>
+
           <%# render "choice_fields", f: f %>
         <% end %>
 
         <%# Method to add fields (application helper) %>
-        <div class="col-3 m-3 p-3 choice unadded">
+        <div class="col-4">
+          <div class="p-3 choice unadded">
            <%= link_to_add_fields "+", f, :choices, class: "center" %>
+          </div>
         </div>
 
-        <div class="col-3 m-3 p-3 choice unadded">
-          <%= link_to_add_fields "+", f, :choices, class: "center" %>
+        <div class="col-4">
+          <div class="p-3 choice unadded">
+           <%= link_to_add_fields "+", f, :choices, class: "center" %>
+          </div>
         </div>
       </div>
-
       <%# Div for button %>
       <div class="d-flex flex-row justify-content-center">
-        <%= button_tag type: "submit", class: "px-4 btn btn-meeting large" do %>
+        <%= button_tag type: "submit", class: "px-4 btn btn-meeting large btn-rounded btn-gradient" do %>
           <i class="far fa-calendar-plus mr-3"></i>New Meeting
         <% end %>
       </div>
-
     <% end %>
   </div>
 </div>

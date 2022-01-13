@@ -42,3 +42,20 @@
   align-items: center;
   width: 300px;
 }
+
+.btn-rounded {
+    border-radius: 35px;
+}
+
+// Gradient Button
+
+.btn-gradient {
+    background: linear-gradient(to right, #8f94fb, #4e54c8);
+    color: #fff;
+    border: 3px solid #eee;
+}
+
+.btn-gradient:hover {
+    color: #fff;
+    background: linear-gradient(to right, #676ef7, #4e54c8);
+}
