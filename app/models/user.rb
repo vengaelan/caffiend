@@ -47,4 +47,26 @@ class User < ApplicationRecord
     end
     user
   end
+
+  # For dashboard "New Connections Made, add .length after method"
+  def self.connections(user)
+    connections = {}
+    meetings = user.meetings
+    meetings.each do |meeting|
+      meeting.invitee_email.each do |email|
+        connections.include?(email) ? connections[email] += 1 : connections[email] = 1
+      end
+    end
+    connections
+  end
+
+  # For dashboard "Completed Coffee Chats"
+  def self.completed_meetings(user)
+    user.meetings.where("status : ? AND end_datetime < ?", "ACCEPTED", Date.today).length
+  end
+
+  # For dashboard "Recurring Chats"
+  def self.recurring_chats(user)
+    User.connections(user).select { |_k, v| v > 1 }.length
+  end
 end
