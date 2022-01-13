@@ -37,7 +37,9 @@
 
     <div class="tab-card">
       <div class="d-flex flex-row-reverse mr-2">
-        <%= link_to "Create New Meeting", new_meeting_path, class: "btn" %>
+        <%= link_to new_meeting_path, class: "px-4 text-decoration-none btn-meeting large link mr-1" do %>
+          <i class="far fa-calendar-plus mr-4"></i>New Meeting
+        <% end %>
       </div>
       <div class="schedule-card d-flex">
         <div class="upcoming-card justify-content-center">

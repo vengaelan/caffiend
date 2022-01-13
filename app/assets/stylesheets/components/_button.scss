@@ -5,16 +5,16 @@
   border-radius: 8px;
 }
 
-.calendar-style .btn-secondary {
+.calendar-style .btn-secondary, .btn-meeting {
   color: lavender;
   background-color: rgb(118, 118, 248);
   border: 1px solid white;
   font-family: 'Open Sans', sans-serif;
-  border-radius: 8px;
+  border-radius: 20px;
   transition: 0.3s ease;
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover, .btn-meeting:hover {
   background-color: lavender;
   color: rgb(118, 118, 248);
 }
@@ -27,4 +27,18 @@
   background-color: white;
   color: rgb(118, 118, 248);
   border: 1px solid #dddd;
+}
+
+.btn-meeting.large {
+  font-size: 20px;
+  width: 25%;
+  height: 50px;
+}
+
+.btn-meeting.large.link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
 }
