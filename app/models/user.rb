@@ -62,7 +62,7 @@ class User < ApplicationRecord
 
   # For dashboard "Completed Coffee Chats"
   def self.completed_meetings(user)
-    user.meetings.where("status : ? AND end_datetime < ?", "ACCEPTED", Date.today).length
+    user.meetings.where("status = ? AND end_datetime < ?", "ACCEPTED", Date.today).length
   end
 
   # For dashboard "Recurring Chats"
