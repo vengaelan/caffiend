@@ -1,7 +1,7 @@
 <%# ------- UPCOMING MEETINGS ------- %>
 
 <%# ------- SIMPLE CALENDER ------- %>
-<div class="container py-5 mt-5">
+<div class="container py-5 my-4">
   <div class="row justify-content-center">
     <div class="calendar-container col-12">
       <%= month_calendar(events: @upcoming_meetings, end_attribute: :end_datetime) do |date, upcoming_meetings| %>
@@ -9,8 +9,8 @@
 
         <% upcoming_meetings.each do |upcoming_meeting| %>
           <%# Add pending class to meeting to differentiate in calendar  %>
-          <div class="<%= upcoming_meeting.status == 'ACCEPTED' ? "meeting" : "meeting pending" %>" data-controller="tooltip" data-tooltip-target="meeting">
-            <p><%= link_to "#{upcoming_meeting.location}", meeting_path(upcoming_meeting), class: "text-decoration-none font-weight-bold" %></p>
+          <div class="<%= upcoming_meeting.status == 'ACCEPTED' ? "meeting m-1" : "meeting pending m-1" %>" data-controller="tooltip" data-tooltip-target="meeting">
+            <p><%= link_to "#{upcoming_meeting.location}", meeting_path(upcoming_meeting), class: "text-decoration-none" %></p>
             <small><%= upcoming_meeting.start_datetime.strftime("%H:%M") %></small>
             <%# Content for tooltip to be added below, default display: none %>
             <div data-tooltip-target="info">

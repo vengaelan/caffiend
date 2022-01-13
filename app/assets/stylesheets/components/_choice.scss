@@ -4,6 +4,11 @@
   background-color: white;
   padding: 10px;
   box-shadow: 4px 4px 6px lightgray;
+  transition: 0.3s ease;
+}
+
+.choice:hover {
+  cursor: pointer;
 }
 
 .choice.selected {
@@ -61,4 +66,22 @@ color: rgb(178, 178, 252);
     color: rgb(115, 115, 250);
     font-weight: bold;
     text-decoration: none;
+}
+
+// Meeting new page
+.containter {
+  h2 {
+    color:rgb(118, 118, 248);
+  }
+}
+.fields.purple {
+  color: rgb(118, 118, 248);
+}
+
+.fields input[type="text"] {
+  background-color: lavender;
+}
+
+.fields textarea {
+  background-color: lavender;
 }
