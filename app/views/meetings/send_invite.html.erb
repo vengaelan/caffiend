@@ -1,7 +1,7 @@
 <div class="invite-container py-5 mt-5" data-controller="choice">
   <div class="invite-box">
     <% if @meeting.choices.length == 1 %>
-      <h3 class="mb-4"><%= "Your meeting with #{@meeting.users.first.first_name}" %></h3>
+      <h3 class="mb-4"><%= "Confirm your meeting with #{@meeting.users.first.first_name}" %></h3>
     <% else %>
       <h3 class="mb-4"><%= "Select your preferred choice" %></h3>
     <% end %>
@@ -9,12 +9,30 @@
       <%# If one choice is chosen, there is no need to choose. Just display meeting details %>
       <%# Else, display all choices and allow for selection by Invitee %>
       <% if @meeting.choices.length == 1 %>
-        <div class="container m-3">
-          <h5>Meeting Details: </h5>
-          <h5><%= @meeting.start_datetime %></h5>
-          <h5><%= @meeting.end_datetime %></h5>
-          <h5><%= @meeting.location %></h5>
+        <div class= "row justify-content-center">
+          <div class="col-10 container row mb-4 choice">
+            <div class="d-flex flex-column justify-content-center m-4 month">
+              <div>
+                <p class="p-0 m-0 text-secondary">
+                  <%= @meeting.start_datetime.strftime("%b") %>
+                </p>
+              </div>
+              <div class="dayint">
+                <%= @meeting.start_datetime.day %>
+              </div>
+            </div>
+            <div class="ml-1 p-2 d-flex flex-column  justify-content-center details ">
+              <h5 class="p-0 m-0 mb-1">
+                <%= @meeting.start_datetime.strftime("%A") %>
+              </h5>
+              <p class="m-0 p-0 text-secondary">
+                <%= @meeting.location %></br>
+                <%= "#{@meeting.start_datetime.strftime('%I:%M')} - #{@meeting.end_datetime.strftime('%I:%M %p')}" %>
+              </p>
+            </div>
+          </div>
         </div>
+
 
       <% else %>
         <div class="container mb-4">
@@ -34,7 +52,7 @@
 
       <br>
 
-      <center><%= f.button :submit, "Confirm Meeting", class: "caffiend-btn", disabled: @meeting.choices.length > 1 %></center>
+      <center><%= f.button :submit, "Confirm Meeting", class: "btn btn-meeting btn-rounded btn-gradient", disabled: @meeting.choices.length > 1 %></center>
     <% end %>
   </div>
 </div>
