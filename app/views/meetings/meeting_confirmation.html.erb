@@ -1,21 +1,34 @@
 <div class="container-confirmation py-5 mt-5">
-  <div class="confirmation-box">
-    <center>
-      <div class="confirmation-title">
-        <h2>Hooray ☕</h2>
-        <h3>Your invite with <%= @meeting.users.first.first_name %> has been confirmed </h3>
-        <br>
+  <div class="confirmation-box p-4">
+    <div class="d-flex flex-column justify-content-center confirmation date">
+      <div>
+        <p class="p-0 m-0 text-secondary  text-center">
+          <%= @meeting.start_datetime.strftime("%b") %>
+        </p>
       </div>
-      <br>
-      <div class="confirmation-details">
-        <h5>Date:</h5>
-        <h5><%= @meeting.start_datetime %> To <%= @meeting.end_datetime %></h5>
-        <h5>Location: <%= @meeting.location %></h5>
-        <br>
+      <div class="text-center confirmation dayint large">
+        <%= @meeting.start_datetime.day %>
       </div>
-      <br>
-      <h5>Sign up with an account with us!</h5>
-      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary"%>
-    </center>
+    </div>
+    <div class="d-flex flex-column justify-content-center align-items-center thankyou">
+      <h1 class="mb-4">Thank you for confirming your invite.</h1>
+      <i class="far fa-check-circle fa-7x"></i>
+    </div>
+    <div class="p-3 confirmation details">
+      <div>
+        <div>
+          <h3 class="mb-0">Caffiend Session</h3>
+        </div>
+        <div>
+          <p class="text-secondary">with <%= "#{@meeting.users.first.first_name} #{@meeting.users.first.last_name}" %></p>
+        </div>
+      </div>
+      <div class="p-3 confirmation details inner">
+        <p class="m-0 p-0 text-secondary">
+          <%= @meeting.location %></br>
+          <%= "#{@meeting.start_datetime.strftime("%A")}, #{@meeting.start_datetime.strftime('%I:%M')} - #{@meeting.end_datetime.strftime('%I:%M %p')}" %>
+        </p>
+      </div>
+    </div>
   </div>
 </div>

@@ -21,13 +21,17 @@
   color: rgb(118, 118, 248);
 }
 
+.dayint.large {
+  font-size: 28px;
+}
+
 .month {
   padding-right: 35px;
   border-right: 1px solid #dddd;
 }
 
 .details {
-  h5 {
+  h5,h3 {
     color: rgb(118, 118, 248);
   }
 }
