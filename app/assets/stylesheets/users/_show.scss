@@ -56,7 +56,13 @@
 
 .info-card {
   display: flex;
-  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px 10px 10px 55px;
+}
+
+.engagement-info {
+  display: flex;
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 10px;
@@ -82,13 +88,30 @@
   font-size: 50px;
 }
 
-.small-img-circle {
-  margin-left: 20px;
-  margin-right: 25px;
-  height: 80px;
-  width: 80px;
-  border-radius: 50px;
+.edit-user {
+  background-color: transparent;
+  border-color: transparent;
+  margin-bottom: 10px;
 }
+
+.card-title img {
+  height: auto;
+  width: 40px;
+}
+
+
+// .fas:hover {
+//   background-color: lavender;
+//   color: rgb(118, 118, 248);
+// }
+
+// .small-img-circle {
+//   margin-left: 20px;
+//   margin-right: 25px;
+//   height: 80px;
+//   width: 80px;
+//   border-radius: 50px;
+// }
 
 .info-card h5 {
   margin: 0;

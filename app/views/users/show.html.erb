@@ -9,13 +9,17 @@
     <div class="dashboard-card col-12 col-md-6 col-lg-3" data-controller="edit-user">
       <div class="card-title">
       <% if current_user.photo.key %>
-        <%= cl_image_tag current_user.photo.key, class:"profile-img" %>
+        <%#= cl_image_tag current_user.photo.key, class:"profile-img" %>
       <% else %>
           <%= image_tag (current_user.image ? current_user.image : "default-user.png"), class: "profile-img" %>
       <% end %>
         <%#= image_tag (current_user.image ? current_user.image : "default-user.png"), class: "profile-img" %>
         <h4><strong> <%= @user.first_name %> <%= @user.last_name %> </strong></h4>
-        <i class="fas fa-mug-hot fa-2x mb-2" data-edit-user-target="icon" data-action="click->edit-user#displayForm"></i>
+        <button class="edit-user" type="button" data-edit-user-target="button" data-action="click->edit-user#displayForm">
+          <%= image_tag "user-edit2.png" %>
+        </button>
+        <%# <i class="fas fa-mug-hot fa-2x mb-2" data-edit-user-target="icon" data-action="click->edit-user#displayForm"></i> %>
+        <br>
       </div>
       <div class="user-info-card" data-edit-user-target="info">
         <h5>About</h5>
@@ -36,38 +40,42 @@
     <%# ----- Schedule Card ----- %>
 
     <div class="tab-card">
-      <div class="d-flex flex-row-reverse mr-2">
+      <div class="meeting-button d-flex flex-row-reverse">
         <%= link_to new_meeting_path, class: "px-4 text-decoration-none btn-meeting large link mr-1" do %>
           <i class="far fa-calendar-plus mr-4"></i>New Meeting
         <% end %>
       </div>
       <div class="schedule-card d-flex">
-        <div class="upcoming-card justify-content-center">
+        <div class="upcoming-card">
           <div class="card-title">
             <h4><strong> Upcoming Schedule </strong></h4>
           </div>
           <div class= "info-card">
-            <%= image_tag "https://avatars.githubusercontent.com/u/88544880?v=4", class: "small-img-circle" %> <%# placeholder user's dp %>
+            <i class="fas fa-user-astronaut"></i>
             <div>
               <h5> Kopi Soh </h5>
               <p> in 1 Day(s) </p>
             </div>
           </div>
           <div class= "info-card">
-            <%= image_tag "https://avatars.githubusercontent.com/u/86636163?v=4", class: "small-img-circle" %> <%# placeholder user's dp %>
+            <i class="fas fa-user-secret"></i>
             <div>
               <h5> Tiger Uncle </h5>
               <p> in 3 Day(s) </p>
             </div>
           </div>
           <div class= "info-card">
-            <%= image_tag "https://avatars.githubusercontent.com/u/82791093?v=4", class: "small-img-circle" %> <%# placeholder user's dp %>
+            <i class="fas fa-user-ninja"></i>
             <div>
               <h5> Milo Boy </h5>
               <p> in 5 Day(s) </p>
             </div>
           </div>
-          <%= link_to "View Calendar", upcoming_meetings_path, class: "btn btn-block", style: "border-radius:25px" %>
+          <div class="calendar-button d-flex">
+            <%= link_to upcoming_meetings_path, class: "px-4 text-decoration-none btn-calendar large link" do %>
+              View Calendar
+            <% end %>
+          </div>
           <br>
         </div>
 
@@ -77,7 +85,7 @@
           <div class="card-title">
             <h4><strong> Engagements </strong></h4>
           </div>
-          <div class ="info-card d-flex justify-content-between">
+          <div class ="engagement-info d-flex justify-content-between">
             <div class="engagement-num">
               <h1><strong> <%= User.connections(current_user).length %> </strong></h1>
             </div>
@@ -85,7 +93,7 @@
               <p> New Connections Made </p>
             </div>
           </div>
-          <div class ="info-card d-flex justify-content-between">
+          <div class ="engagement-info d-flex justify-content-between">
             <div class="engagement-num">
               <h1><strong> <%= User.completed_meetings(current_user) %> </strong></h1>
             </div>
@@ -93,7 +101,7 @@
               <p> Completed Coffee Chats </p>
             </div>
           </div>
-          <div class ="info-card d-flex justify-content-between">
+          <div class ="engagement-info d-flex justify-content-between">
             <div class="engagement-num">
               <h1><strong> <%= User.recurring_chats(current_user) %> </strong></h1>
             </div>
