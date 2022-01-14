@@ -1,5 +1,4 @@
 .dashboard-container {
-  // margin: auto;
   background-color: #f6f9fc;
 }
 
@@ -8,7 +7,7 @@
   margin: 15px;
   border: 1px solid #ddd;
   border-radius: 10px;
-  max-height: 600px;
+  max-height: 800px;
   max-width: 300px;
   box-shadow: 4px 4px 6px lightgrey;
 }
@@ -42,7 +41,7 @@
   text-align: center;
 }
 
-.profile-img {
+.dashboard-card .profile-img {
   margin: 10px;
   height: 150px;
   width: 150px;
@@ -98,12 +97,6 @@
   height: auto;
   width: 40px;
 }
-
-
-// .fas:hover {
-//   background-color: lavender;
-//   color: rgb(118, 118, 248);
-// }
 
 // .small-img-circle {
 //   margin-left: 20px;
