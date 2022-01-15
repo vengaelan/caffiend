@@ -71,6 +71,6 @@ class User < ApplicationRecord
 
   # For first three meetings
   def self.first_three_meetings(user)
-    user.meetings.where("start_datetime > ?", Date.today).order(:start_datetime)[...3]
+    user.meetings.where("start_datetime > ?", Date.today).order(:start_datetime)[..2]
   end
 end
