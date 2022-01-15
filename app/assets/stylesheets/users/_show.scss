@@ -54,38 +54,35 @@
 }
 
 .info-card {
-  display: flex;
   margin-top: 20px;
   margin-bottom: 20px;
-  padding: 10px 10px 10px 55px;
+  padding: 10px 10px 10px 70px;
 }
 
-.engagement-info {
-  display: flex;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 10px;
+.engagement-info span {
+  vertical-align: middle;
 }
 
-.engagement-num {
-  text-align: center;
-  margin: auto auto auto 40px;
-  height: 80px;
-  width: 80px;
-}
+// .engagement-num {
+//   text-align: center;
+//   margin: auto auto auto 40px;
+//   height: 80px;
+//   width: 80px;
+//   color: rgb(118, 118, 245);
+// }
 
-.engagement-details {
-  text-align: center;
-  margin: auto 60px auto auto;
-  height: 80px;
-  width: 80px;
-}
+// .engagement-details {
+//   text-align: center;
+//   margin: auto 60px auto auto;
+//   height: 80px;
+//   width: 80px;
+// }
 
-.fas {
-  margin-left: 20px;
-  margin-right: 25px;
-  font-size: 50px;
-}
+// .fas {
+//   margin-left: 20px;
+//   margin-right: 25px;
+//   font-size: 50px;
+// }
 
 .edit-user {
   background-color: transparent;

@@ -15,25 +15,27 @@
       <% end %>
         <%#= image_tag (current_user.image ? current_user.image : "default-user.png"), class: "profile-img" %>
         <h4><strong> <%= @user.first_name %> <%= @user.last_name %> </strong></h4>
-        <button class="edit-user" type="button" data-edit-user-target="button" data-action="click->edit-user#displayForm">
-          <%= image_tag "user-edit2.png" %>
-        </button>
-        <%# <i class="fas fa-mug-hot fa-2x mb-2" data-edit-user-target="icon" data-action="click->edit-user#displayForm"></i> %>
-        <br>
       </div>
       <div class="user-info-card" data-edit-user-target="info">
-        <h5>About</h5>
-        <p><%= @user.about =%></p>
-        <br>
-        <h5>Description</h5>
-        <p> <%= @user.description %></p>
+        <div class="d-flex justify-content-end">
+          <button class="edit-user" type="button" data-edit-user-target="button" data-action="click->edit-user#displayForm">
+            <i class="far fa-edit"></i>
+          </button>
+        </div>
+        <center>
+          <h5>About</h5>
+          <p><%= @user.about =%></p>
+          <br>
+          <h5>Description</h5>
+          <p> <%= @user.description %></p>
+        </center>
       </div>
 
       <%= simple_form_for @user, html: { class: 'd-none', data: { edit_user_target: 'form', action: 'submit->edit-user#update' } } do |f| %>
         <%= f.input :about %>
         <%= f.input :description %>
         <%= f.input :photo, as: :file %>
-        <%= f.submit %>
+        <%= f.submit class:"px-4 btn-submit large link" %>
       <% end %>
     </div>
 
@@ -50,27 +52,13 @@
           <div class="card-title">
             <h4><strong> Upcoming Schedule </strong></h4>
           </div>
-          <div class= "info-card">
-            <i class="fas fa-user-astronaut"></i>
-            <div>
-              <h5> Kopi Soh </h5>
-              <p> in 1 Day(s) </p>
+          <% User.first_three_meetings(current_user).each do |first_three_meetings| %>
+            <div class= "info-card">
+              <h5> Caffiend Session </h5>
+              <p><strong> Location: </strong><%= first_three_meetings.location %></p>
+              <p> in <%= (first_three_meetings.start_datetime.strftime('%d')).to_i - (Date.today.day).to_i %> Day(s) </p>
             </div>
-          </div>
-          <div class= "info-card">
-            <i class="fas fa-user-secret"></i>
-            <div>
-              <h5> Tiger Uncle </h5>
-              <p> in 3 Day(s) </p>
-            </div>
-          </div>
-          <div class= "info-card">
-            <i class="fas fa-user-ninja"></i>
-            <div>
-              <h5> Milo Boy </h5>
-              <p> in 5 Day(s) </p>
-            </div>
-          </div>
+          <% end %>
           <div class="calendar-button d-flex">
             <%= link_to upcoming_meetings_path, class: "px-4 text-decoration-none btn-calendar large link" do %>
               View Calendar
@@ -85,28 +73,34 @@
           <div class="card-title">
             <h4><strong> Engagements </strong></h4>
           </div>
-          <div class ="engagement-info d-flex justify-content-between">
-            <div class="engagement-num">
-              <h1><strong> <%= User.connections(current_user).length %> </strong></h1>
+          <div class="mt-4">
+            <div class="m-3 confirmation details inner">
+              <div class ="enagement-info p-3 m-2">
+                <center>
+                <p>
+                <span style="font-size: 30px"><strong><%= User.connections(current_user).length %> </strong></span>&nbsp;New Connections
+                </p>
+                </center>
+              </div>
             </div>
-            <div class="engagement-details">
-              <p> New Connections Made </p>
+            <div class="m-3 confirmation details inner">
+              <div class ="engagement-info p-3 m-2">
+                <center>
+                  <p>
+                  <span style="font-size: 30px"><strong><%= User.completed_meetings(current_user) %> </strong></span>&nbsp;Completed Chats
+                  </p>
+                </center>
+              </div>
             </div>
-          </div>
-          <div class ="engagement-info d-flex justify-content-between">
-            <div class="engagement-num">
-              <h1><strong> <%= User.completed_meetings(current_user) %> </strong></h1>
-            </div>
-            <div class="engagement-details">
-              <p> Completed Coffee Chats </p>
-            </div>
-          </div>
-          <div class ="engagement-info d-flex justify-content-between">
-            <div class="engagement-num">
-              <h1><strong> <%= User.recurring_chats(current_user) %> </strong></h1>
-            </div>
-            <div class="engagement-details">
-              <p> Recurring Chats </p>
+            <div class="m-3 confirmation details inner">
+              <div class ="engagement-info p-3 m-2">
+                <center>
+                  <p>
+                  <span style="font-size: 30px"><strong><%= User.recurring_chats(current_user) %> </strong></span>&nbsp;Recurring Chats
+                  </p>
+                </center>
+                </div>
+              </div>
             </div>
           </div>
         </div>
