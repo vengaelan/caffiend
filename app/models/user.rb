@@ -68,4 +68,9 @@ class User < ApplicationRecord
   def self.recurring_chats(user)
     User.connections(user).select { |_k, v| v > 1 }.length
   end
+
+  # For first three meetings
+  def self.first_three_meetings(user)
+    user.meetings.where("start_datetime > ?", Date.today).order(:start_datetime)[..2]
+  end
 end
