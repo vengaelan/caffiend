@@ -1,15 +1,19 @@
 <%# ------- MEETING INVITE ------- %>
-<div class="py-5 mt-4 pl-5">
-  <div>
-    <h5>Meeting Invite:</h5>
-    <h5>Date: <%= @meeting.start_datetime.to_date %></h5>
-    <h5>Start Time: <%= @meeting.start_datetime.strftime("%H:%M") %></h5>
-    <h5>End Time: <%= @meeting.end_datetime.strftime("%H:%M") %></h5>
-    <h5>Location: <%= @meeting.location %></h5>
-    <h5>Status: <%= @meeting.status %></h5>
-    <h5>links: <a href="<%= @meeting.meeting_link %>">Google Meet Link</a></h5>
-
-    <%= link_to 'Send Invite', send_invite_meeting_path, class: "text-decoration-none" %>
-    <%= link_to "Back to Dashboard", user_path(current_user), class: "text-decoration-none"  %>
+<div class="invite-container py-5 mt-5">
+  <div class="invite-box">
+    <center> <h3>Meeting Invite </h3>
+      <br> 
+      <h5>Date: <%= @meeting.start_datetime.to_date %></h5> 
+      <h5>Start Time: <%= @meeting.start_datetime.strftime("%H:%M") %></h5>
+      <h5>End Time: <%= @meeting.end_datetime.strftime("%H:%M") %></h5>
+      <h5>Location: <%= @meeting.location %></h5>
+      <h5>Status: <%= @meeting.status %></h5>
+      <h5>links: <a href="<%= @meeting.meeting_link %>">Google Meet Link</a></h5>
+    </center>
+    <br>
+    <div class="d-flex">
+      <%= link_to 'Send Invite', send_invite_meeting_path, class: "btn-submit large link" %>&nbsp;
+      <%= link_to "Back to Dashboard", user_path(current_user), class: "btn-submit large link"  %>
+    </div>
   </div>
 </div>
