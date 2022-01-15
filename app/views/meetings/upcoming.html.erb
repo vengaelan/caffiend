@@ -14,9 +14,16 @@
             <small><%= upcoming_meeting.start_datetime.strftime("%H:%M") %></small>
             <%# Content for tooltip to be added below, default display: none %>
             <div data-tooltip-target="info">
-              <p>Tooltip Test</p>
-              <%= upcoming_meeting.location %><br>
-              <a href="<%= upcoming_meeting.meeting_link %>">Google Meet Link</a>
+              <p>CAFFIEND SESSION</p>
+              <p> <i class="fas fa-map-marker-alt"></i> <%= upcoming_meeting.location %> </p>
+              <p> <i class="fas fa-user-friends"></i> <%= upcoming_meeting.invitee_email.first %> </p>
+              <a href="<%= upcoming_meeting.meeting_link %>"><i class="fas fa-link"></i>Google Meet Link</a>
+              <div class="copy-text input-group mb-3">
+                 <input type="text" class="form-control text" value="<%= request.base_url + send_invite_meeting_path(upcoming_meeting) %>" readonly >
+                  <div class="input-group-append">
+                    <button class="btn btn-dark fa fa-clone" type="button" ></button>
+                  </div>
+              </div>
             </div>
           </div>
         <% end %>
