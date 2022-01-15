@@ -30,12 +30,7 @@
 
               </p>
               <a href="<%= upcoming_meeting.meeting_link %>"><i class="fas fa-link"></i>Google Meet Link</a>
-              <div class="copy-text input-group mb-3">
-                 <input type="text" class="form-control text" value="<%= request.base_url + send_invite_meeting_path(upcoming_meeting) %>" readonly >
-                  <div class="input-group-append">
-                    <button class="btn btn-dark fa fa-clone" type="button" ></button>
-                  </div>
-              </div>
+              <p><%= render "copy_to_clipboard", upcoming_meeting: upcoming_meeting %></p>
             </div>
           </div>
         <% end %>

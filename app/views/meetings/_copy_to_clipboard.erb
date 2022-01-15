@@ -1,0 +1,13 @@
+<div class="div" data-controller="copyclipboard">
+  <div class="d-flex flex-row m-3">
+    <%# TODO: Content of choice to be updated as per design  %>
+
+    <div class="copy-text input-group mb-3" >
+      <input type="text" class="form-control text" data-copyclipboard-target= "url" value="<%= request.base_url + send_invite_meeting_path(upcoming_meeting) %>" readonly >
+      <div class="input-group-append">
+        <button class="btn btn-dark fa fa-clone" type="button" data-action="click->copyclipboard#copy"></button>
+      </div>
+    </div>
+
+  </div>
+</div>
