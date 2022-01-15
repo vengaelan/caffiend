@@ -23,10 +23,10 @@
           </button>
         </div>
         <center>
-          <h5><span style="color: #7676f8">About</span></h5>
+          <h5><strong><span style="color: #7676f8">About</span></strong></h5>
           <p><%= @user.about =%></p>
           <br>
-          <h5><span style="color: #7676f8">Description</span></h5>
+          <h5><strong><span style="color: #7676f8">Description</span></strong></h5>
           <p> <%= @user.description %></p>
         </center>
       </div>
@@ -56,7 +56,7 @@
             <div class= "info-card">
               <h5> Caffiend Session </h5>
               <p><strong> Location: </strong><%= first_three_meetings.location %></p>
-              <p> in <span style="color: #7676f8"><%= (first_three_meetings.start_datetime.strftime('%d')).to_i - (Date.today.day).to_i %> Day(s) </span></p>
+              <p> in <span style="color: #7676f8"><strong><%= (first_three_meetings.start_datetime.strftime('%d')).to_i - (Date.today.day).to_i %> Day(s) </strong></span></p>
             </div>
           <% end %>
           <div class="calendar-button d-flex">
@@ -73,7 +73,7 @@
           <div class="card-title">
             <h4><strong> Engagements </strong></h4>
           </div>
-          <div class="mt-4">
+          <div class="engagement-box">
             <div class="m-3 confirmation details inner">
               <div class ="enagement-info p-3 m-2">
                 <center>

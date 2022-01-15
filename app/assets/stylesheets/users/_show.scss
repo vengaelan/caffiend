@@ -59,9 +59,15 @@
   padding: 10px 10px 10px 70px;
 }
 
-.engagement-info span {
-  vertical-align: middle;
+.engagement-box {
+  position: absolute;
+  width: 300px;
 }
+
+.engagement-info {
+  position: relative;
+}
+
 
 // .engagement-num {
 //   text-align: center;
