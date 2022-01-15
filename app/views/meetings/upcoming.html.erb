@@ -16,7 +16,19 @@
             <div data-tooltip-target="info">
               <p>CAFFIEND SESSION</p>
               <p> <i class="fas fa-map-marker-alt"></i> <%= upcoming_meeting.location %> </p>
-              <p> <i class="fas fa-user-friends"></i> <%= upcoming_meeting.invitee_email.first %> </p>
+              <p>
+                <i class="fas fa-user-friends"></i>
+                <% if upcoming_meeting.invitee_email.size >= 1%>
+                  <ul>
+                    <% upcoming_meeting.invitee_email.each do |email| %>
+                      <li> <%= email %></li>
+                    <% end %>
+                  </ul>
+                <% else %>
+                  <%= upcoming_meeting.invitee_email.first %>
+                <% end %>
+
+              </p>
               <a href="<%= upcoming_meeting.meeting_link %>"><i class="fas fa-link"></i>Google Meet Link</a>
               <div class="copy-text input-group mb-3">
                  <input type="text" class="form-control text" value="<%= request.base_url + send_invite_meeting_path(upcoming_meeting) %>" readonly >
