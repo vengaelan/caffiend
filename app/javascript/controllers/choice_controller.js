@@ -20,7 +20,7 @@ export default class extends Controller {
     // Adds selected class to the clicked choice
     event.currentTarget.classList.add("selected")
     // Submit button enabled once a selection has been clicked
-    $(".caffiend-btn").prop("disabled", false)
+    $(".btn-meeting").prop("disabled", false)
     // Update hidden meeting input fields
     this.startDateTarget.value = event.params["start"]
     this.endDateTarget.value = event.params["end"]
