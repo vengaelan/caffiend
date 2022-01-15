@@ -1,9 +1,9 @@
 <div class="invite-container py-5 mt-5" data-controller="choice">
   <div class="invite-box">
     <% if @meeting.choices.length == 1 %>
-      <h3 class="mb-4"><%= "Confirm your meeting with #{@meeting.users.first.first_name}" %></h3>
+      <center><h3 class="mb-4"><%= "Confirm your meeting with #{@meeting.users.first.first_name}" %></h3></center>
     <% else %>
-      <h3 class="mb-4"><%= "Select your preferred choice" %></h3>
+      <center><h3 class="mb-4"><%= "Select your preferred choice" %></h3></center>
     <% end %>
     <%= simple_form_for @meeting do |f| %>
       <%# If one choice is chosen, there is no need to choose. Just display meeting details %>

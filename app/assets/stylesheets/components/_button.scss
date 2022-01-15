@@ -1,11 +1,4 @@
-.calendar-style .caffiend-btn, .caffiend-btn, .tab-card .btn, .upcoming-card .btn {
-  background-color: #0A2540;
-  color: white;
-  font-family: 'Open Sans', sans-serif;
-  border-radius: 8px;
-}
-
-.calendar-style .btn-secondary, .btn-meeting {
+.calendar-style .btn-secondary, .btn-meeting, .btn-calendar {
   color: lavender;
   background-color: rgb(118, 118, 248);
   border: 1px solid white;
@@ -14,7 +7,7 @@
   transition: 0.3s ease;
 }
 
-.btn-secondary:hover, .btn-meeting:hover {
+.btn-secondary:hover, .btn-meeting:hover, .btn-calendar:hover {
   background-color: lavender;
   color: rgb(118, 118, 248);
 }
@@ -29,7 +22,11 @@
   border: 1px solid #dddd;
 }
 
-.btn-meeting.large {
+.meeting-button {
+  margin: 0px 15px;
+}
+
+.btn-meeting.large, .btn-calendar.large {
   font-size: 20px;
   width: 25%;
   height: 50px;
@@ -41,6 +38,19 @@
   justify-content: center;
   align-items: center;
   width: 300px;
+}
+
+.btn-calendar.large.link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+}
+
+.calendar-button {
+  justify-content: space-evenly;
+  align-self: flex-end;
 }
 
 .btn-rounded {
