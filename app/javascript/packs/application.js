@@ -39,7 +39,7 @@ document.addEventListener('turbolinks:load', () => {
   initUpdateNavbarOnScroll(); // navbar.js
   init_add_fields(); // Add fields in nested form
   init_remove_fields(); // Remove fields in nested form
-  init_copy_to_clipboard();
+  //init_copy_to_clipboard();
   reveal;
 });
 
