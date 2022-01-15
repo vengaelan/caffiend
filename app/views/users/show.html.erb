@@ -23,10 +23,10 @@
           </button>
         </div>
         <center>
-          <h5>About</h5>
+          <h5><span style="color: #7676f8">About</span></h5>
           <p><%= @user.about =%></p>
           <br>
-          <h5>Description</h5>
+          <h5><span style="color: #7676f8">Description</span></h5>
           <p> <%= @user.description %></p>
         </center>
       </div>
@@ -56,7 +56,7 @@
             <div class= "info-card">
               <h5> Caffiend Session </h5>
               <p><strong> Location: </strong><%= first_three_meetings.location %></p>
-              <p> in <%= (first_three_meetings.start_datetime.strftime('%d')).to_i - (Date.today.day).to_i %> Day(s) </p>
+              <p> in <span style="color: #7676f8"><%= (first_three_meetings.start_datetime.strftime('%d')).to_i - (Date.today.day).to_i %> Day(s) </span></p>
             </div>
           <% end %>
           <div class="calendar-button d-flex">
@@ -78,7 +78,7 @@
               <div class ="enagement-info p-3 m-2">
                 <center>
                 <p>
-                <span style="font-size: 30px"><strong><%= User.connections(current_user).length %> </strong></span>&nbsp;New Connections
+                <span style="font-size: 30px; color: #7676f8"><strong><%= User.connections(current_user).length %> </strong></span>&nbsp;New Connections
                 </p>
                 </center>
               </div>
@@ -87,7 +87,7 @@
               <div class ="engagement-info p-3 m-2">
                 <center>
                   <p>
-                  <span style="font-size: 30px"><strong><%= User.completed_meetings(current_user) %> </strong></span>&nbsp;Completed Chats
+                  <span style="font-size: 30px; color: #7676f8"><strong><%= User.completed_meetings(current_user) %> </strong></span>&nbsp;Completed Chats
                   </p>
                 </center>
               </div>
@@ -96,7 +96,7 @@
               <div class ="engagement-info p-3 m-2">
                 <center>
                   <p>
-                  <span style="font-size: 30px"><strong><%= User.recurring_chats(current_user) %> </strong></span>&nbsp;Recurring Chats
+                  <span style="font-size: 30px; color: #7676f8"><strong><%= User.recurring_chats(current_user) %> </strong></span>&nbsp;Recurring Chats
                   </p>
                 </center>
                 </div>
