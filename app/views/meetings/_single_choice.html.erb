@@ -1,0 +1,21 @@
+<hr class="mt-3">
+<div class="single_choice">
+  <h5>Your Caffiend Session invite at a glance:</h5>
+  <p class="mb-3 mt-3 p-0">
+    <i class="fas fa-calendar-alt fa-lg mx-1"></i>
+    <%= @meeting.start_datetime.strftime("%A") %>,
+    <%= @meeting.start_datetime.strftime("%b") %>
+    <%= @meeting.start_datetime.day %>
+  </p>
+  <p class="mt-3 mb-3 p-0">
+    <i class="fas fa-clock fa-lg mx-1"></i>
+    <%= @meeting.start_datetime.strftime('%I:%M') %> -
+    <%= @meeting.end_datetime.strftime('%I:%M %p') %>
+  </p>
+
+  <p class="mt-3 mb-3 p-0">
+    <i class="fas fa-map-marker-alt fa-lg mx-1"></i>
+    <%= @meeting.location %></br>
+  </p>
+  <hr class="mb-3">
+</div>
