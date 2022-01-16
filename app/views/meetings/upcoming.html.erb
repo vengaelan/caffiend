@@ -17,17 +17,20 @@
             <div data-tooltip-target="info">
               <p>Caffiend Session</p>
 
+              <%# Location with link %>
               <div class="row">
                 <div class="col-1">
                   <i class="fas fa-map-marker-alt"></i>
                 </div>
                 <div class="col-10">
+                  <% url = "https://www.google.com/maps/search/#{upcoming_meeting.location}" %>
                   <ul>
-                      <li><%= upcoming_meeting.location %></li>
+                      <li><a href="<%=url%>" target="_blank"><%= upcoming_meeting.location %></a></li>
                   </ul>
                 </div>
               </div>
 
+              <%# Invitee list %>
               <div class="row">
                 <div class="col-1">
                   <i class="fas fa-user-friends"></i>
