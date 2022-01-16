@@ -74,6 +74,14 @@
             <h4><strong> Engagements </strong></h4>
           </div>
           <div class="engagement-box">
+            <div class="d-flex flex-row justify-content-center p-3">
+              <div class="mr-3">
+                <h4><%= User.connections(current_user).length %></h4>
+              </div>
+              <div>
+                New Connections
+              </div>
+            </div>
             <div class="m-3 confirmation details inner">
               <div class ="enagement-info p-3 m-2">
                 <center>
