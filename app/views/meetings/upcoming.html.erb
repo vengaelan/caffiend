@@ -1,22 +1,68 @@
 <%# ------- UPCOMING MEETINGS ------- %>
 
-<%# ------- SIMPLE CALENDER ------- %>
 <div class="container py-5 my-4">
   <div class="row justify-content-center">
     <div class="calendar-container col-12">
       <%= month_calendar(events: @upcoming_meetings, end_attribute: :end_datetime) do |date, upcoming_meetings| %>
         <%= date %>
-
         <% upcoming_meetings.each do |upcoming_meeting| %>
           <%# Add pending class to meeting to differentiate in calendar  %>
           <div class="<%= upcoming_meeting.status == 'ACCEPTED' ? "meeting m-1" : "meeting pending m-1" %>" data-controller="tooltip" data-tooltip-target="meeting">
             <p class="m-0 p-0"><%= link_to "#{upcoming_meeting.location}", meeting_path(upcoming_meeting), class: "text-decoration-none" %></p>
             <small><%= upcoming_meeting.start_datetime.strftime("%H:%M") %></small>
-            <%# Content for tooltip to be added below, default display: none %>
+
+            <%# Tooltip Content%>
             <div data-tooltip-target="info">
-              <p>Tooltip Test</p>
-              <%= upcoming_meeting.location %><br>
-              <a href="<%= upcoming_meeting.meeting_link %>">Google Meet Link</a>
+              <h4 class="ml-3 mt-3">Caffiend Session</h4>
+              <hr>
+
+              <%# Location with link %>
+              <div class="row">
+                <div class="col-1">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="col-10">
+                  <% url = "https://www.google.com/maps/search/#{upcoming_meeting.location}" %>
+                  <ul>
+                      <li><a href="<%=url%>" target="_blank"><%= upcoming_meeting.location %></a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <%# Invitee list %>
+              <div class="row">
+                <div class="col-1">
+                  <i class="fas fa-user-friends"></i>
+                </div>
+                <div class="col-10">
+                  <% if upcoming_meeting.invitee_email.size >= 1%>
+                    <ul>
+                      <% upcoming_meeting.invitee_email.each do |email| %>
+                        <li> <%= email %></li>
+                      <% end %>
+                    </ul>
+                  <% else %>
+                    <%= upcoming_meeting.invitee_email.first %>
+                  <% end %>
+                </div>
+              </div>
+
+              <%# Google hangouts link %>
+              <div class="row">
+                <div class="col-1">
+                  <i class="fas fa-link"></i>
+                </div>
+                <div class="col-10">
+                  <ul>
+                      <li><a href="<%= upcoming_meeting.meeting_link %>">Online meeting</a></li>
+                  </ul>
+                </div>
+              </div>
+              <hr>
+
+              <%# Copy Caffiend meeting invite%>
+              <p id="clipboardlink" class="ml-3">Caffiend Invite Link:</p>
+              <%= render "copy_to_clipboard", upcoming_meeting: upcoming_meeting %>
             </div>
           </div>
         <% end %>
