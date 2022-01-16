@@ -48,7 +48,18 @@
                 </div>
               </div>
 
-              <a href="<%= upcoming_meeting.meeting_link %>"><i class="fas fa-link"></i>Google Meet Link</a>
+              <%# Google hangouts link %>
+              <div class="row">
+                <div class="col-1">
+                  <i class="fas fa-link"></i>
+                </div>
+                <div class="col-10">
+                  <ul>
+                      <li><a href="<%= upcoming_meeting.meeting_link %>">Online meeting</a></li>
+                  </ul>
+                </div>
+              </div>
+
               <p><%= render "copy_to_clipboard", upcoming_meeting: upcoming_meeting %></p>
             </div>
 
