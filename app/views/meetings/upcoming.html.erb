@@ -12,26 +12,33 @@
           <div class="<%= upcoming_meeting.status == 'ACCEPTED' ? "meeting m-1" : "meeting pending m-1" %>" data-controller="tooltip" data-tooltip-target="meeting">
             <p class="m-0 p-0"><%= link_to "#{upcoming_meeting.location}", meeting_path(upcoming_meeting), class: "text-decoration-none" %></p>
             <small><%= upcoming_meeting.start_datetime.strftime("%H:%M") %></small>
-            <%# Content for tooltip to be added below, default display: none %>
+
+            <%# Tooltip Content%>
             <div data-tooltip-target="info">
               <p>CAFFIEND SESSION</p>
               <p> <i class="fas fa-map-marker-alt"></i> <%= upcoming_meeting.location %> </p>
               <p>
-                <i class="fas fa-user-friends"></i>
-                <% if upcoming_meeting.invitee_email.size >= 1%>
-                  <ul>
-                    <% upcoming_meeting.invitee_email.each do |email| %>
-                      <li> <%= email %></li>
+                <div class="row">
+                  <div class="col-1">
+                    <i class="fas fa-user-friends"></i>
+                  </div>
+                  <div class="col-10">
+                    <% if upcoming_meeting.invitee_email.size >= 1%>
+                      <ul>
+                        <% upcoming_meeting.invitee_email.each do |email| %>
+                          <li> <%= email %></li>
+                        <% end %>
+                      </ul>
+                    <% else %>
+                      <%= upcoming_meeting.invitee_email.first %>
                     <% end %>
-                  </ul>
-                <% else %>
-                  <%= upcoming_meeting.invitee_email.first %>
-                <% end %>
-
+                  </div>
+                </div>
               </p>
               <a href="<%= upcoming_meeting.meeting_link %>"><i class="fas fa-link"></i>Google Meet Link</a>
               <p><%= render "copy_to_clipboard", upcoming_meeting: upcoming_meeting %></p>
             </div>
+
           </div>
         <% end %>
       <% end %>
