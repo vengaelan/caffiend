@@ -54,38 +54,35 @@
 }
 
 .info-card {
-  display: flex;
   margin-top: 20px;
   margin-bottom: 20px;
-  padding: 10px 10px 10px 55px;
+  padding: 10px 10px 10px 70px;
+}
+
+.engagement-box {
+  position: absolute;
+  width: 300px;
 }
 
 .engagement-info {
-  display: flex;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 10px;
+  position: relative;
 }
 
-.engagement-num {
-  text-align: center;
-  margin: auto auto auto 40px;
-  height: 80px;
-  width: 80px;
-}
 
-.engagement-details {
-  text-align: center;
-  margin: auto 60px auto auto;
-  height: 80px;
-  width: 80px;
-}
+// .engagement-num {
+//   text-align: center;
+//   margin: auto auto auto 40px;
+//   height: 80px;
+//   width: 80px;
+//   color: rgb(118, 118, 245);
+// }
 
-.fas {
-  margin-left: 20px;
-  margin-right: 25px;
-  font-size: 50px;
-}
+// .engagement-details {
+//   text-align: center;
+//   margin: auto 60px auto auto;
+//   height: 80px;
+//   width: 80px;
+// }
 
 .edit-user {
   background-color: transparent;
@@ -98,16 +95,9 @@
   width: 40px;
 }
 
-// .small-img-circle {
-//   margin-left: 20px;
-//   margin-right: 25px;
-//   height: 80px;
-//   width: 80px;
-//   border-radius: 50px;
-// }
-
 .info-card h5 {
   margin: 0;
+  color: #7676f8;
 }
 
 .info-card p {

@@ -1,4 +1,4 @@
-.calendar-style .btn-secondary, .btn-meeting, .btn-calendar {
+.calendar-style .btn-secondary, .btn-meeting, .btn-calendar, .btn-submit {
   color: lavender;
   background-color: rgb(118, 118, 248);
   border: 1px solid white;
@@ -7,7 +7,7 @@
   transition: 0.3s ease;
 }
 
-.btn-secondary:hover, .btn-meeting:hover, .btn-calendar:hover {
+.btn-secondary:hover, .btn-meeting:hover, .btn-calendar:hover, .btn-submit:hover {
   background-color: lavender;
   color: rgb(118, 118, 248);
 }
@@ -33,6 +33,13 @@
   height: 50px;
 }
 
+.btn-submit.large {
+  font-size: 20px;
+  width: 25%;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
 .btn-meeting.large.link {
   display: flex;
   flex-direction: row;
@@ -41,12 +48,13 @@
   width: 300px;
 }
 
-.btn-calendar.large.link {
+.btn-calendar.large.link, .btn-submit.large.link {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 250px;
+  text-decoration: none;
 }
 
 .calendar-button {
