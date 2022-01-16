@@ -15,26 +15,36 @@
 
             <%# Tooltip Content%>
             <div data-tooltip-target="info">
-              <p>CAFFIEND SESSION</p>
-              <p> <i class="fas fa-map-marker-alt"></i> <%= upcoming_meeting.location %> </p>
-              <p>
-                <div class="row">
-                  <div class="col-1">
-                    <i class="fas fa-user-friends"></i>
-                  </div>
-                  <div class="col-10">
-                    <% if upcoming_meeting.invitee_email.size >= 1%>
-                      <ul>
-                        <% upcoming_meeting.invitee_email.each do |email| %>
-                          <li> <%= email %></li>
-                        <% end %>
-                      </ul>
-                    <% else %>
-                      <%= upcoming_meeting.invitee_email.first %>
-                    <% end %>
-                  </div>
+              <p>Caffiend Session</p>
+
+              <div class="row">
+                <div class="col-1">
+                  <i class="fas fa-map-marker-alt"></i>
                 </div>
-              </p>
+                <div class="col-10">
+                  <ul>
+                      <li><%= upcoming_meeting.location %></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-1">
+                  <i class="fas fa-user-friends"></i>
+                </div>
+                <div class="col-10">
+                  <% if upcoming_meeting.invitee_email.size >= 1%>
+                    <ul>
+                      <% upcoming_meeting.invitee_email.each do |email| %>
+                        <li> <%= email %></li>
+                      <% end %>
+                    </ul>
+                  <% else %>
+                    <%= upcoming_meeting.invitee_email.first %>
+                  <% end %>
+                </div>
+              </div>
+
               <a href="<%= upcoming_meeting.meeting_link %>"><i class="fas fa-link"></i>Google Meet Link</a>
               <p><%= render "copy_to_clipboard", upcoming_meeting: upcoming_meeting %></p>
             </div>
