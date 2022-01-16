@@ -15,7 +15,9 @@
 
             <%# Tooltip Content%>
             <div data-tooltip-target="info">
-              <p>Caffiend Session</p>
+              <h4 class="ml-3 mt-3">Caffiend Session</h4>
+
+              <hr>
 
               <%# Location with link %>
               <div class="row">
@@ -60,6 +62,10 @@
                 </div>
               </div>
 
+              <hr>
+              
+              <%# Copy Caffiend meeting invite%>
+              <p class="ml-3">Caffiend Invite Link:</p>
               <%= render "copy_to_clipboard", upcoming_meeting: upcoming_meeting %>
             </div>
 
