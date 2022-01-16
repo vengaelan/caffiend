@@ -1,12 +1,10 @@
 <%# ------- UPCOMING MEETINGS ------- %>
 
-<%# ------- SIMPLE CALENDER ------- %>
 <div class="container py-5 my-4">
   <div class="row justify-content-center">
     <div class="calendar-container col-12">
       <%= month_calendar(events: @upcoming_meetings, end_attribute: :end_datetime) do |date, upcoming_meetings| %>
         <%= date %>
-
         <% upcoming_meetings.each do |upcoming_meeting| %>
           <%# Add pending class to meeting to differentiate in calendar  %>
           <div class="<%= upcoming_meeting.status == 'ACCEPTED' ? "meeting m-1" : "meeting pending m-1" %>" data-controller="tooltip" data-tooltip-target="meeting">
@@ -16,7 +14,6 @@
             <%# Tooltip Content%>
             <div data-tooltip-target="info">
               <h4 class="ml-3 mt-3">Caffiend Session</h4>
-
               <hr>
 
               <%# Location with link %>
@@ -61,14 +58,12 @@
                   </ul>
                 </div>
               </div>
-
               <hr>
 
               <%# Copy Caffiend meeting invite%>
               <p id="clipboardlink" class="ml-3">Caffiend Invite Link:</p>
               <%= render "copy_to_clipboard", upcoming_meeting: upcoming_meeting %>
             </div>
-
           </div>
         <% end %>
       <% end %>
