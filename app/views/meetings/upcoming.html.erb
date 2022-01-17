@@ -18,10 +18,10 @@
 
               <%# Location with link %>
               <div class="row">
-                <div class="col-1">
+                <div class="col-1 ml-3 mr-0">
                   <i class="fas fa-map-marker-alt"></i>
                 </div>
-                <div class="col-10">
+                <div class="col-8 ml-0 pl-0">
                   <% url = "https://www.google.com/maps/search/#{upcoming_meeting.location}" %>
                   <ul>
                       <li><a href="<%=url%>" target="_blank"><%= upcoming_meeting.location %></a></li>
@@ -31,10 +31,10 @@
 
               <%# Invitee list %>
               <div class="row">
-                <div class="col-1">
+                <div class="col-1 ml-3 mr-0">
                   <i class="fas fa-user-friends"></i>
                 </div>
-                <div class="col-10">
+                <div class="col-8 ml-0 pl-0">
                   <% if upcoming_meeting.invitee_email.size >= 1%>
                     <ul>
                       <% upcoming_meeting.invitee_email.each do |email| %>
@@ -49,10 +49,10 @@
 
               <%# Google hangouts link %>
               <div class="row">
-                <div class="col-1">
+                <div class="col-1 ml-3 mr-0">
                   <i class="fas fa-link"></i>
                 </div>
-                <div class="col-10">
+                <div class="col-8 ml-0 pl-0">
                   <ul>
                       <li><a href="<%= upcoming_meeting.meeting_link %>">Online meeting</a></li>
                   </ul>
