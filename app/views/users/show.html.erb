@@ -74,32 +74,22 @@
             <h4><strong> Engagements </strong></h4>
           </div>
           <div class="engagement-box">
-            <div class="m-3 confirmation details inner">
-              <div class ="enagement-info p-3 m-2">
-                <center>
-                <p>
-                <span style="font-size: 30px; color: #7676f8"><strong><%= User.connections(current_user).length %> </strong></span>&nbsp;New Connections
-                </p>
-                </center>
+            <div class="info-card p-0">
+              <div class ="engagement-info p-3 m-2 d-flex justify-content-center align-items-center">
+                <h1 class="m-0 p-0 mr-3"><%= User.connections(current_user).length %></h1>
+                <p class="m-0 p-0">New Connections</p>
               </div>
             </div>
-            <div class="m-3 confirmation details inner">
-              <div class ="engagement-info p-3 m-2">
-                <center>
-                  <p>
-                  <span style="font-size: 30px; color: #7676f8"><strong><%= User.completed_meetings(current_user) %> </strong></span>&nbsp;Completed Chats
-                  </p>
-                </center>
+            <div class="info-card p-0">
+              <div class ="engagement-info p-3 m-2 d-flex justify-content-center align-items-center">
+                <h1 class="m-0 p-0 mr-3"><%= User.completed_meetings(current_user) %></h1>
+                <p class="m-0 p-0">Completed Chats</p>
               </div>
             </div>
-            <div class="m-3 confirmation details inner">
-              <div class ="engagement-info p-3 m-2">
-                <center>
-                  <p>
-                  <span style="font-size: 30px; color: #7676f8"><strong><%= User.recurring_chats(current_user) %> </strong></span>&nbsp;Recurring Chats
-                  </p>
-                </center>
-                </div>
+            <div class="info-card p-0">
+              <div class ="engagement-info p-3 m-2 d-flex justify-content-center align-items-center">
+                <h1 class="m-0 p-0 mr-3"><%= User.recurring_chats(current_user) %></h1>
+                <p class="m-0 p-0">Recurring Chats</p>
               </div>
             </div>
           </div>

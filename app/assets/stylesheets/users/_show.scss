@@ -57,15 +57,16 @@
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 10px 10px 10px 70px;
+  height: 90px;
 }
 
 .engagement-box {
-  position: absolute;
+  //position: absolute;
   width: 300px;
 }
 
 .engagement-info {
-  position: relative;
+  //position: relative;
 }
 
 
@@ -102,4 +103,8 @@
 
 .info-card p {
   margin: 0;
+}
+
+.engagement-box h1 {
+  color: rgb(118, 118, 248);
 }
