@@ -12,8 +12,8 @@
             <small><%= upcoming_meeting.start_datetime.strftime("%H:%M") %></small>
 
             <%# Tooltip Content%>
-            <div data-tooltip-target="info">
-              <h4 class="ml-3 my-3">Caffiend Session</h4>
+            <div class= "tooltipdiv" data-tooltip-target="info">
+              <h4 class="ml-3 py-3">Caffiend Session</h4>
               <%# <hr> %>
 
               <%# Location with link %>
@@ -28,7 +28,7 @@
                   </ul>
                 </div>
               </div>
-              
+
               <% if upcoming_meeting.invitee_email.size > 0 %>
                 <%# Invitee list %>
                 <div class="row">
