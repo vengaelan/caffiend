@@ -35,7 +35,9 @@
         <%= f.input :about %>
         <%= f.input :description %>
         <%= f.input :photo, as: :file %>
-        <%= f.submit class:"px-4 btn-submit large link" %>
+        <div class="calendar-button d-flex">
+          <%= f.submit class:"px-4 btn-submit large link" %>
+        </div>
       <% end %>
     </div>
 
