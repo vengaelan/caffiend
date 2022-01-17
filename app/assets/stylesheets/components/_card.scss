@@ -6,19 +6,16 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
-    //gap: 12px;
 }
+
 
 .content-cards > div {
   margin: 10px;
 }
 
 .content-card {
-    //width: 240px;
-    //border-radius: 10px;
-    text-align: center;
-    padding: 20px;
-    //border: 1px solid rgb(230,230,230);
+  text-align: center;
+  padding: 0 100px 0 100px;
 }
 
 .content-card:hover {
@@ -31,7 +28,6 @@
   font-family: 'Open-sans', sans-serif;
   text-align: center;
   padding: 16px;
-
 }
 
 .content-card h4 {
@@ -49,4 +45,10 @@
   margin-right: auto;
   width: 20%;
   margin-bottom: 20px;
+}
+
+@media(max-width: 1024px) {
+  .content-card .content-img {
+    width: 50px;
+  }
 }
