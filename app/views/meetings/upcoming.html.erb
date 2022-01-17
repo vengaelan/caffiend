@@ -8,13 +8,13 @@
         <% upcoming_meetings.each do |upcoming_meeting| %>
           <%# Add pending class to meeting to differentiate in calendar  %>
           <div class="<%= upcoming_meeting.status == 'ACCEPTED' ? "meeting m-1" : "meeting pending m-1" %>" data-controller="tooltip" data-tooltip-target="meeting">
-            <p class="m-0 p-0"><%= link_to "#{upcoming_meeting.location}", meeting_path(upcoming_meeting), class: "text-decoration-none" %></p>
+            <p class="m-0 p-0"><%= "#{upcoming_meeting.location}" %></p>
             <small><%= upcoming_meeting.start_datetime.strftime("%H:%M") %></small>
 
             <%# Tooltip Content%>
             <div data-tooltip-target="info">
-              <h4 class="ml-3 mt-3">Caffiend Session</h4>
-              <hr>
+              <h4 class="ml-3 my-3">Caffiend Session</h4>
+              <%# <hr> %>
 
               <%# Location with link %>
               <div class="row">
@@ -58,10 +58,10 @@
                   </ul>
                 </div>
               </div>
-              <hr>
+              <%# <hr> %>
 
               <%# Copy Caffiend meeting invite%>
-              <p id="clipboardlink" class="ml-3">Caffiend Invite Link:</p>
+              <p id="clipboardlink" class="ml-3 mb-1">Caffiend Invite Link:</p>
               <%= render "copy_to_clipboard", upcoming_meeting: upcoming_meeting %>
             </div>
           </div>
