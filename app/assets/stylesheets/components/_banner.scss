@@ -55,6 +55,7 @@
   font-size: 20px;
   font-family: 'Open-sans', sans-serif;
   font-weight: light;
+  color: #F6F9FC;
 
     -webkit-animation: fadein 8s; /* Safari, Chrome and Opera > 12.1 */
        -moz-animation: fadein 8s; /* Firefox < 16 */
@@ -101,6 +102,11 @@
   .home-banner .banner-text h5 {
   font-size: 10px;
 }
+}
+
+.text-highlight-content {
+  color: #7676f8;
+  text-shadow: 1px 1px 1px lightgray;
 }
 
 .text-highlight {
