@@ -3,12 +3,15 @@
   <div class="invite-box">
     <center><h3><%= "Invite Summary" %></h3></center>
     <div class="container mt-4">
+      <% if @meeting.choices.length == 1 %>
+        <%= render "single_choice" %>
+      <% else %>
         <div class="container mb-4">
           <% @meeting.choices.each do |c| %>
             <%= render "choice_selection", choice: c %>
           <% end %>
         </div>
-
+      <% end %>
       <div class="d-flex flex-column copy-text input-group mt-4 mb-3">
         <div>
           <label for="copy-invite">Your unique invite link</label>
