@@ -3,12 +3,15 @@
   <div class="invite-box">
     <center><h3><%= "Invite Summary" %></h3></center>
     <div class="container mt-4">
+      <% if @meeting.choices.length == 1 %>
+        <%= render "single_choice" %>
+      <% else %>
         <div class="container mb-4">
           <% @meeting.choices.each do |c| %>
             <%= render "choice_selection", choice: c %>
           <% end %>
         </div>
-
+      <% end %>
       <div class="d-flex flex-column copy-text input-group mt-4 mb-3">
         <div>
           <label for="copy-invite">Your unique invite link</label>
@@ -16,7 +19,7 @@
         <div class="d-flex flex-row">
           <input type="text" id="copy-invite" class="form-control text" value="<%= request.base_url + send_invite_meeting_path(@meeting) %>" readonly >
           <div class="input-group-append">
-            <button class="btn btn-dark fa fa-clone" type="button" ></button>
+            <button class="btn btn-purple fa fa-clone" type="button" ></button>
           </div>
         </div>
       </div>
